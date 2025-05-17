@@ -24,7 +24,7 @@ Continued by adding on a lego style in ArcGIS Pro, using ESRI's remixer and then
 ![](/Images/CooperPriceWorkSample3.png)
 ![](/Images/CooperPriceWorkSample4.png)
 
-### These 2 maps were also created as part of my Cartography class in Fall 2024, Looking at internet access and supplemental nutrition assistance program usafe
+### These maps were also created as part of my Cartography class in Fall 2024, Looking at internet access and supplemental nutrition assistance program usafe
 
 The data for these maps was pulled in from the American Community Survey done by the US Census, which was then brought into python to do the following:
 
@@ -38,4 +38,16 @@ After exporting the data, using ArcGIS Pro and Illustrator I was to:
 
 ## PFAS Research Maps
 ![](/Images/DualMap4.2.png)
-![](/Images/LocationsWcolorUpdated.png)
+
+### Through my research with Penn State Extension, I've looked at PFAS in roadside springs, and the link that has to surrounding land use
+
+The points in these maps represented roadside springs analyzed in our research
+
+- Sites were sampled by various research team members
+- Sites tested for various contaminats of emerging concern (CEC)
+    - PFAS, pesticide, personal care products, and pharmaceuticals. 
+
+Spatial analysis consistented of
+- Creating geodataframes in python by joining lab testing result spreadsheets with roadside spring point location files
+- Buffering the springs, clipping land cover data, and tabulating land cover types
+- Applied bivaret symbology, and intricate legend design 
