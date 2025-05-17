@@ -1,5 +1,6 @@
 # Cooper's Portfolio
 
+theme: jekyll-theme-minimal
 
 ## Yellowstone Wildfire Risk Lego 
 ![](/Images/CooperPriceWorkSample2.png)
