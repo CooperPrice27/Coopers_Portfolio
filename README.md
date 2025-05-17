@@ -2,12 +2,12 @@
 
 test changee
 ## Yellowstone Wildfire Risk Lego 
-![](https://github.com/CooperPrice27/Coopers_Portfolio/blob/main/Images/CooperPriceWorkSample2.png)
+![](/Images/CooperPriceWorkSample2.png)
 
 ## Michigan Internet Access 
-![](https://github.com/CooperPrice27/Coopers_Portfolio/blob/main/Images/CooperPriceWorkSample3.png)
-![](https://github.com/CooperPrice27/Coopers_Portfolio/blob/main/Images/CooperPriceWorkSample4.png)
+![](/Images/CooperPriceWorkSample3.png)
+![](/Images/CooperPriceWorkSample4.png)
 
 ## PFAS Research Maps
-![](https://github.com/CooperPrice27/Coopers_Portfolio/blob/main/Images/DualMap4.2.png)
-![](https://github.com/CooperPrice27/Coopers_Portfolio/blob/main/Images/LocationsWcolorUpdated.png)
+![](/Images/DualMap4.2.png)
+![](/Images/LocationsWcolorUpdated.png)
