@@ -39,7 +39,7 @@ After exporting the data, using ArcGIS Pro and Illustrator I was to:
 ## PFAS Research Maps
 ![](/Images/DualMap4.2.png)
 
-### Through my research with Penn State Extension, I've looked at PFAS in roadside springs, and the link that has to surrounding land use
+### Through my research with Penn State Extension, I've looked at water quality in roadside springs, and the link that has to surrounding land use
 
 The points in these maps represented roadside springs analyzed in our research
 
