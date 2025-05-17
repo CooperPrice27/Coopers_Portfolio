@@ -10,8 +10,8 @@ In this project I pulled in a myraid of data from LANDFIRE, the NLCD, and the Na
 
 - building a tessellation across the park
 - construction various raster layers based on different variables of fire risk
-    - promiximity to roads
-    - vegetation class and bulk density
+    - Promiximity to roads
+    - Vegetation class and bulk density
     - Slope and ascept
 Assigning a risk factor from 1-5 based on the fire risk variables, and performing a raster sum on all the previous layers to get a finaly risk talley for each cell in the tessellation 
 
