@@ -1,4 +1,4 @@
-<img width="1312" alt="Screenshot 2025-05-16 at 10 24 57 PM" src="https://github.com/user-attachments/assets/11bfbfbb-313a-4d10-896a-b3d3046b1f8c" /># Cooper's Portfolio
+# Cooper's Portfolio
 
 
 ## Yellowstone Wildfire Risk Lego 
