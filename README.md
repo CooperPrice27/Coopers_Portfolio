@@ -16,7 +16,7 @@ In this project I pulled in a myraid of data from LANDFIRE, the NLCD, and the Na
 
 Ultimately, assigning a risk factor from 1-5 based on the fire risk variables, and performing a raster sum on all the previous layers to get a finaly risk talley for each cell in the tessellation 
 
-Continued by adding on a lego style in ArcGIS Pro, using ESRI's remixer and I then continued to refine the symbology in Adobe Illustrator:
+Continued by adding on a lego style in ArcGIS Pro, using ESRI's remixer and then continued to refine the symbology in Adobe Illustrator:
 - Polishing the lego typeface and adding the labels
 - Legend design
 - Creating the state boarders
