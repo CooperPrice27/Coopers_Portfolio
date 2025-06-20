@@ -55,9 +55,13 @@ Spatial analysis consistented of
 ### The findings from this research were also compiled in an [online web map](https://extension.psu.edu/roadside-springs-map)
 ![](/Images/WebMap.png)
 
-Allowing for interested roadside spring users to be able to look at the sampling results of springs across the state
+Developed a public-facing web map for Penn State Extension 
+- Designed for public accessibility, enabling roadside spring users to explore sampling results across Pennsylvania
+- Included dynamic pop-up displays for key contaminants (e.g., PFAS, pesticides) at each site
 
-This project gave me great exposure to the ArcGIS online suite, and great learning opportunity for arcade coding language 
+Developed Arcade scripting skills for advanced customization
+- Wrote expressions to real-time water quality metrics with data driven symbology
+- Customized pop-up content and attribute expressions based on contaminant thresholds
 
 ## Mukuru Village Maps
 ![](/Images/OverviewFINAL.jpg)
