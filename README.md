@@ -60,6 +60,8 @@ Allowing for interested roadside spring users to be able to look at the sampling
 This project gave me great exposure to the ArcGIS online suite, and great learning opportunity for arcade coding language 
 
 ## Mukuru Village Maps
+![](/Images/OverviewFINAL.jpg)
+![](/Images/IndividualVillages.jpg)
 
 
 
