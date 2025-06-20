@@ -52,13 +52,15 @@ Spatial analysis consistented of
 - Buffering the springs, clipping land cover data, and tabulating land cover types
 - Applied bivaret symbology, and intricate legend design 
 
-
 ### The findings from this research were also compiled in an [online web map](https://extension.psu.edu/roadside-springs-map)
-
+![](/Images/WebMap.png)
 
 Allowing for interested roadside spring users to be able to look at the sampling results of springs across the state
 
 This project gave me great exposure to the ArcGIS online suite, and great learning opportunity for arcade coding language 
+
+## Mukuru Village Maps
+
 
 
 
