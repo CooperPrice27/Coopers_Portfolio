@@ -67,7 +67,7 @@ Developed Arcade scripting skills for advanced customization
 ![](/Images/OverviewFINAL.jpg)
 ![](/Images/IndividualVillages.jpg)
 
-# Project context
+### Project context
 
 - These maps were created to support a graduate research project focused on urban resilience in Nairobi’s Mukuru informal settlements, where flood risks, political marginalization, and land-use conflicts intersect.
 - The research examined how unequal power dynamics shape climate adaptation efforts in informal communitie.
@@ -76,7 +76,7 @@ Developed Arcade scripting skills for advanced customization
 - Initially, the maps were to be printed did not fit the requirements of the project.
 - At the recommendation of our lab manager, I stepped in to redesign them using ArcGIS Pro and Adobe Illustrator to create clearer, more informative, and professional-quality village and regional overview maps
 
-# Design Note
+### Design Note
 
 - This set—11 village-level maps and 2 overview maps—was produced on a very tight turnaround (approximately 10 hours over a day and a half).
 - While the final maps reflect a strong effort within those constraints, They reflect both the constraints of time and the practical, fast-paced cartographic support often expected of student workers in cartographic research environments.
