@@ -64,8 +64,8 @@ Developed Arcade scripting skills for advanced customization
 - Customized pop-up content and attribute expressions based on contaminant thresholds
 
 ## Mukuru, Nairobi Village Maps
-![](/Images/OverviewFINAL.jpg)
-![](/Images/IndividualVillages.jpg)
+![](/Images/OverviewFINAL6_29.png)
+![](/Images/IndividualVillages6_29_2.png)
 
 ### Project context
 
