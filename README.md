@@ -1,6 +1,6 @@
 # Cooper's Portfolio
 
-## Yellowstone Wildfire Risk Lego 
+## Yellowstone Wildfire Risk LEGO 
 ![](/Images/CooperPriceWorkSample2.png)
 
 ### This map was created as my final project in my Cartography class in Fall 2024, I've always had a strong interest in using GIS for wildlife analysis. 
@@ -36,7 +36,7 @@ After exporting the data, using ArcGIS Pro and Illustrator I was to:
 - Apply choropleth and proportional symbology
 - Designing legends and adding labels 
 
-## PFAS Research Maps
+## PFAS Research
 ![](/Images/DualMap4.2.png)
 
 ### Through my research with Penn State Extension, I've looked at water quality in roadside springs, and the link that has to surrounding land use
@@ -63,7 +63,7 @@ Developed Arcade scripting skills for advanced customization
 - Wrote expressions to real-time water quality metrics with data driven symbology
 - Customized pop-up content and attribute expressions based on contaminant thresholds
 
-## Mukuru, Nairobi Village Maps
+## Mukuru, Nairobi Village Research
 ![](/Images/OverviewFINAL6_29.png)
 ![](/Images/IndividualVillages6_29_2.png)
 
