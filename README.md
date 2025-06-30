@@ -1,5 +1,3 @@
-# Cooper's Portfolio
-
 ## Yellowstone Wildfire Risk LEGO 
 ![](/Images/CooperPriceWorkSample2.png)
 
