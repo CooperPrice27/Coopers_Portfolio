@@ -61,6 +61,23 @@ Developed Arcade scripting skills for advanced customization
 - Wrote expressions to real-time water quality metrics with data driven symbology
 - Customized pop-up content and attribute expressions based on contaminant thresholds
 
+## Community Mapping for Pollinator Pathways
+![](/Images/SubwayLayout7_10-01.png)
+
+### Project context
+
+- This map was designed as part of Community Mapping Day Event, hosted as a collaberation betweeen the PSU GeoGraphics lab and Easttown Township
+- The focus of the day was to highlight Easttown townships pollinator pathways work, goals centered around building green infrastructure, planting new gardens, working with community members to support pollinator habitat, etc.
+
+### Design process
+
+- My end in the Community Mapping Day was...
+    - To create some kind of spatial graphic that would illustrator a potential path for pollinator gardens from Easttown Townnship to metro Philadelphia
+- Steps taken throughout the day to complete this transit style graphic were
+    - Filtering all the parks/green spaces that did not have pollinator garden devoate space
+    - Routing those parks along distances pollinators can cover
+    - Styling it all to a SEPTA-inspried transportation graphic
+
 ## Mukuru, Nairobi Village Research
 ![](/Images/OverviewFINAL6_29.png)
 ![](/Images/IndividualVillages6_29_2.png)
