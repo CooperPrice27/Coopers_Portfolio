@@ -113,7 +113,7 @@ Developed Arcade scripting skills for advanced customization
 - While the final maps reflect a strong effort within those constraints, They reflect both the constraints of time and the practical, fast-paced cartographic support often expected of student workers in cartographic research environments
 
 ## Black Bear Hunting Map
-![](/Images/BBharvest6_29.png)
+![](/Images/BBHarvest6_29.png)
 
 ### Project Context
 
