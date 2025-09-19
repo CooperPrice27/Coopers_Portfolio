@@ -79,7 +79,7 @@ Developed Arcade scripting skills for advanced customization
     - Styling it all to a SEPTA-inspried transportation graphic
 
 ## Millbrook Marsh, Lego Maps
-![](/Images/MillbrookStuffCombined.pmng)
+![](/Images/MillbrookStuffCombined.png)
 
 
 ### These maps were designed for the Millbrook Marsh Visitor Center, through the GeoGraphics Lab
