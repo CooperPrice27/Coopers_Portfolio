@@ -64,12 +64,12 @@ Developed Arcade scripting skills for advanced customization
 ## Community Mapping for Pollinator Pathways
 ![](/Images/SubwayLayout7_10-01.png)
 
-### Project context
+### Project Context
 
 - This map was designed as part of Community Mapping Day Event, hosted as a collaberation betweeen the PSU GeoGraphics lab and Easttown Township
 - The focus of the day was to highlight Easttown townships pollinator pathways work, goals centered around building green infrastructure, planting new gardens, working with community members to support pollinator habitat, etc.
 
-### Design process
+### Design Process
 
 - My end in the Community Mapping Day was...
     - To create some kind of spatial graphic that would illustrator a potential path for pollinator gardens from Easttown Townnship to metro Philadelphia
@@ -78,11 +78,25 @@ Developed Arcade scripting skills for advanced customization
     - Routing those parks along distances pollinators can cover
     - Styling it all to a SEPTA-inspried transportation graphic
 
+## Millbrook Marsh, Lego Maps
+![](/Images/FirstDraftAI.pdf)
+![](/Images/LegoTiled.png)
+
+### These maps were designed for the Millbrook Marsh Visitor Center, through the GeoGraphics Lab
+
+- The goal of this was to create something that a younger audience could relate and understand with
+    - We also wanted something tactile that would encourgae interaction between the map and the audience
+ - We reached these goals through the use of Legos
+
+### Design Process
+
+- The first map was designed in ArcGIS pro, using the remixer function to assign lego like design to the major land uses
+- Then the second map was built using brick link studio, a 3D lego modeling software, to gets a life-like view into what a final model would look like
 ## Mukuru, Nairobi Village Research
 ![](/Images/OverviewFINAL6_29.png)
 ![](/Images/IndividualVillages6_29_2.png)
 
-### Project context
+### Project Context
 
 - These maps were created to support a graduate research project focused on urban resilience in Nairobi’s Mukuru informal settlements, where flood risks, political marginalization, and land-use conflicts intersect
 - The research examined how unequal power dynamics shape climate adaptation efforts in informal communitie
@@ -96,9 +110,14 @@ Developed Arcade scripting skills for advanced customization
 - This set—11 village-level maps and 2 overview maps—was produced on a very tight turnaround (approximately 10 hours over a day and a half)
 - While the final maps reflect a strong effort within those constraints, They reflect both the constraints of time and the practical, fast-paced cartographic support often expected of student workers in cartographic research environments
 
+## Black Bear Hunting Map
+![](/Images/BBharvest6_29)
 
+### Project Context
 
-
+- This map was designed as a passion project, to explore designing maps in Blender, a 3D modeling software
+    - Blender is typically used for 3D design and animation, but recently has become more popular for cartographic map design
+    - Combined traditional cartographic techniques with a choropleth map, then pushed it further by using non-traditional software to introduce height as an uncommon explored design element
 
 
 
