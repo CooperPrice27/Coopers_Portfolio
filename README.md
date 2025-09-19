@@ -79,8 +79,8 @@ Developed Arcade scripting skills for advanced customization
     - Styling it all to a SEPTA-inspried transportation graphic
 
 ## Millbrook Marsh, Lego Maps
-![](/Images/FirstDraftAI.pdf)
-![](/Images/LegoTiled.png)
+![](/Images/MillbrookStuffCombined.pmng)
+
 
 ### These maps were designed for the Millbrook Marsh Visitor Center, through the GeoGraphics Lab
 
@@ -90,8 +90,10 @@ Developed Arcade scripting skills for advanced customization
 
 ### Design Process
 
-- The first map was designed in ArcGIS pro, using the remixer function to assign lego like design to the major land uses
-- Then the second map was built using brick link studio, a 3D lego modeling software, to gets a life-like view into what a final model would look like
+- The map on the right was designed in ArcGIS pro, based on the satellite imagery of millbrook, then using the remixer function to assign lego like design to the major land use types
+- Then maps on the left were built using brick link studio, a 3D lego modeling software, to get a life-like view into what a final model would look like
+
+
 ## Mukuru, Nairobi Village Research
 ![](/Images/OverviewFINAL6_29.png)
 ![](/Images/IndividualVillages6_29_2.png)
