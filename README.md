@@ -102,3 +102,7 @@
 **Tools Used:** QGIS + Blender + Adobe Illustrator + Adobe Photoshop
 
 ---
+
+# Miscellaneous Maps
+
+![](/Images/MiscPortfolio.png)
