@@ -35,12 +35,14 @@
 
 # GeoGraphics Lab Work
 
-## Community Mapping for Pollinator Pathways
-![](/Images/SubwayLayout7_10-01.png)
+## BSA, 7 Mountains Camp
+![](/Images/BSAMap1.png)
+![](/Images/BSAMap2.png)
+![](/Images/BSAMap3.png)
 
-**Description:** This map was created in an event hosted by the PSU GeoGraphics lab, focusing on pollinator pathways in Easttown Township. Using a subway style map to communicate a pathway for pollinators through parks. 
+**Description:** These maps were created as for a local scout camp. They has some old, outdated maps that needed to update before their first events of the year, so they worked with the lab to get their maps redesigned. We completed 3 different verisons, high color + no elevation, high color + with elevation, low color + with elevation.
 
-**Tools Used:** ArcGIS + Adobe Illustrator
+**Tools Used:** QGIS + ArcGIS + Eduard + Adobe Illustrator + Adobe Photoshop
 
 ---
 
@@ -50,17 +52,6 @@
 **Description:** These maps were designed for the Millbrook Marsh Visitor Center, a project a worked on through the GeoGraphics Lab. Designing a spatial installation for their new visitor center, tailoring to a younger audience
 
 **Tools Used:** ArcGIS + Adobe Illustrator + Brinklink Studio
-
----
-
-## BSA, 7 Mountains Camp
-![](/Images/BSAMap1.png)
-![](/Images/BSAMap2.png)
-![](/Images/BSAMap3.png)
-
-**Description:** These maps were created as for a local scout camp. They has some old, outdated maps that needed to update before their first events of the year, so they worked with the lab to get their maps redesigned. We completed 3 different verisons, high color + no elevation, high color + with elevation, low color + with elevation.
-
-**Tools Used:** QGIS + ArcGIS + Eduard + Adobe Illustrator + Adobe Photoshop
 
 ---
 
@@ -74,7 +65,7 @@
 
 ---
 
-# Personal Project
+# Personal Projects
 
 ## Black Bear Hunting Map
 ![](/Images/BBHarvest6_29.png)
@@ -97,12 +88,12 @@
 ## Map Gallery Submission
 ![](/Images/IsleRoyale.png)
 
-**Description:** This map was first started as a christmas present for my brother, he works as a park range on Isle Royale National Park. But the timeline of designing this lined up with also submitting it into the NACIS studuent map competiton
+**Description:** This map was first started as a christmas present for my brother, he works as a park ranger on Isle Royale National Park. But the timeline of designing this lined up with also submitting it into the NACIS studuent map competiton
 
 **Tools Used:** QGIS + Blender + Adobe Illustrator + Adobe Photoshop
 
 ---
 
-# Miscellaneous Maps
+# Other Projects
 
 ![](/Images/MiscPortfolio.png)
