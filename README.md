@@ -76,7 +76,7 @@
 
 ---
 
-# NACIS 
+# NACIS + CaGIS
 
 ## Map Quilt 
 ![](/Images/RevisedMapQuilt.png)
@@ -91,6 +91,12 @@
 **Description:** This map was first started as a christmas present for my brother, he works as a park ranger on Isle Royale National Park. But the timeline of designing this lined up with also submitting it into the NACIS studuent map competiton
 
 **Tools Used:** QGIS + Blender + Adobe Illustrator + Adobe Photoshop
+
+## CaGIS Map Competiton
+
+**Description:** This map was submitted to the Cartography and Geographic Information Society (CaGIS), student map competiton. Building off of the work I did for the NACIS map quilt, I thought it would be cool to try and scrabble-ify part of city.
+
+**Tools Used:** QGIS + Adobe Illustrator
 
 ---
 
