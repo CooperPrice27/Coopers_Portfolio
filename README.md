@@ -93,6 +93,7 @@
 **Tools Used:** QGIS + Blender + Adobe Illustrator + Adobe Photoshop
 
 ## CaGIS Map Competiton
+![](/Images/NYCScrabble_Final.png)
 
 **Description:** This map was submitted to the Cartography and Geographic Information Society (CaGIS), student map competiton. Building off of the work I did for the NACIS map quilt, I thought it would be cool to try and scrabble-ify part of city.
 
