@@ -13,7 +13,7 @@
 ![](/Images/CooperPriceWorkSample3.png)
 ![](/Images/CooperPriceWorkSample4.png)
 
-**Description:** These maps were created for a class using Census ACS data, and looking at precent change   
+**Description:** These maps were created for a class using Census ACS data, and looking at percent change   
 
 **Tools Used:** ArcGIS + Adobe Illustrator
 
@@ -24,7 +24,7 @@
 ## PFAS Research
 ![](/Images/DualMap4.2.png)
 
-**Description:** Through my research with Penn State Extension, I've looked at water quality in roadside springs, and the link that has to surrounding land use through a bivaret map
+**Description:** Through my research with Penn State Extension, I've looked at water quality in roadside springs, and the link that has to surrounding land use through a bivariate map. Further, I have presented this research at the following conferences: Penn State Water Conference, PIERS conference, Penn State Undergraduate Research Exhibit, UCOWR Conference
 
 **Web Map:** These findings of this research were also published in [online web map](https://extension.psu.edu/roadside-springs-map)
 ![](/Images/WebMap.png)
