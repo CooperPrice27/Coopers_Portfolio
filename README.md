@@ -1,1 +1,687 @@
-Cartography and GIS Portfolio, view [here](https://cooperprice27.github.io/Coopers_Portfolio/) 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooper Price — Cartography Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --text: #e8e4dc;
+    --muted: #6b6b6b;
+    --accent: #c8a96e;
+    --accent2: #5e8c61;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    min-height: 100vh;
+    cursor: default;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(14,14,14,0.95), transparent);
+  }
+
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 80px;
+    max-width: 900px;
+  }
+
+  .hero-label {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 460px;
+    font-size: 13px;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 48px 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,169,110,0.08);
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--text);
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  /* CARD */
+  .card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--surface);
+    cursor: pointer;
+  }
+
+  .card-images {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+
+  .card-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease;
+    filter: brightness(0.75) saturate(0.9);
+  }
+
+  .card:hover .card-images img {
+    transform: scale(1.04);
+    filter: brightness(0.4) saturate(0.7);
+  }
+
+  /* Multiple images: show as strips */
+  .card-images.multi img {
+    flex: 1;
+    border-right: 1px solid rgba(0,0,0,0.3);
+  }
+  .card-images.multi img:last-child { border-right: none; }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    transition: opacity 0.4s;
+  }
+
+  .card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--text);
+    line-height: 1.2;
+    transform: translateY(4px);
+    transition: transform 0.4s;
+  }
+
+  .card:hover .card-title {
+    transform: translateY(0);
+  }
+
+  .card-tools {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s 0.05s, transform 0.3s 0.05s;
+  }
+
+  .card:hover .card-tools {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-hint {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover .card-hint { opacity: 1; }
+
+  /* MODAL */
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(8,8,8,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .modal-bg.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    width: 92vw;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transform: scale(0.96);
+    transition: transform 0.3s;
+  }
+
+  .modal-bg.open .modal {
+    transform: scale(1);
+  }
+
+  .modal-media {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .modal-media img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .modal-info {
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .modal-section-tag {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .modal-desc {
+    color: var(--muted);
+    line-height: 1.85;
+    font-size: 13px;
+  }
+
+  .modal-tools-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tool-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text);
+  }
+
+  .modal-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid rgba(200,169,110,0.3);
+    padding-bottom: 2px;
+    display: inline-block;
+    transition: border-color 0.2s;
+  }
+  .modal-link:hover { border-color: var(--accent); }
+
+  .modal-close {
+    position: fixed;
+    top: 28px;
+    right: 36px;
+    z-index: 300;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 8px 16px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); border-color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    padding: 80px 48px 40px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 120px 20px 60px; }
+    .section { padding: 60px 20px 0; }
+    .grid { grid-template-columns: 1fr; }
+    .modal { grid-template-columns: 1fr; }
+    .modal-info { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Cooper Price</div>
+  <div class="nav-links">
+    <a href="#classwork">Classwork</a>
+    <a href="#research">Research</a>
+    <a href="#lab">Lab</a>
+    <a href="#personal">Personal</a>
+    <a href="#nacis">NACIS</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">Cartography & Geographic Design</div>
+  <h1>Making places<br><em>legible.</em></h1>
+  <p>Maps, spatial analysis, and geographic visualization — from wildfire risk in Yellowstone to flood mapping in Nairobi.</p>
+</section>
+
+<section class="section" id="classwork">
+  <div class="section-header">
+    <span class="section-tag">01</span>
+    <h2 class="section-title">Classwork</h2>
+  </div>
+  <div class="grid">
+    <div class="card" onclick="openModal('yellowstone')">
+      <div class="card-images">
+        <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk" onerror="this.style.background='#1e1e1e';this.style.display='block'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">Yellowstone Wildfire Risk</div>
+        <div class="card-tools">ArcGIS · Illustrator · Bricklink Studio</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+    <div class="card" onclick="openModal('michigan')">
+      <div class="card-images multi">
+        <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" onerror="this.style.background='#1a1e1a'">
+        <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2" onerror="this.style.background='#1a1e1a'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">Michigan Internet Access</div>
+        <div class="card-tools">ArcGIS · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="section-header">
+    <span class="section-tag">02</span>
+    <h2 class="section-title">Research</h2>
+  </div>
+  <div class="grid">
+    <div class="card" onclick="openModal('pfas')" style="grid-column: span 2;">
+      <div class="card-images multi">
+        <img src="Images/DualMap4.2.png" alt="PFAS Research" onerror="this.style.background='#121e12'">
+        <img src="Images/WebMap.png" alt="PFAS Web Map" onerror="this.style.background='#121e12'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">PFAS & Roadside Springs Research</div>
+        <div class="card-tools">ArcGIS · Python · Arcade · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="lab">
+  <div class="section-header">
+    <span class="section-tag">03</span>
+    <h2 class="section-title">GeoGraphics Lab</h2>
+  </div>
+  <div class="grid">
+    <div class="card" onclick="openModal('bsa')">
+      <div class="card-images multi">
+        <img src="Images/BSAMap1.png" alt="BSA Map 1" onerror="this.style.background='#1a1e18'">
+        <img src="Images/BSAMap2.png" alt="BSA Map 2" onerror="this.style.background='#1a1e18'">
+        <img src="Images/BSAMap3.png" alt="BSA Map 3" onerror="this.style.background='#1a1e18'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">BSA — 7 Mountains Camp</div>
+        <div class="card-tools">QGIS · ArcGIS · Eduard · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+    <div class="card" onclick="openModal('millbrook')">
+      <div class="card-images">
+        <img src="Images/MillbrookStuffCombined.png" alt="Millbrook" onerror="this.style.background='#181818'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">Millbrook Marsh LEGO Maps</div>
+        <div class="card-tools">ArcGIS · Illustrator · Bricklink Studio</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+    <div class="card" onclick="openModal('mukuru')">
+      <div class="card-images multi">
+        <img src="Images/OverviewFINAL6_29.png" alt="Mukuru Overview" onerror="this.style.background='#1e1a12'">
+        <img src="Images/IndividualVillages6_29_2.png" alt="Mukuru Villages" onerror="this.style.background='#1e1a12'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">Mukuru, Nairobi</div>
+        <div class="card-tools">ArcGIS · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="personal">
+  <div class="section-header">
+    <span class="section-tag">04</span>
+    <h2 class="section-title">Personal Projects</h2>
+  </div>
+  <div class="grid">
+    <div class="card" onclick="openModal('bear')">
+      <div class="card-images">
+        <img src="Images/BBHarvest6_29.png" alt="Black Bear" onerror="this.style.background='#12120e'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">Black Bear Hunting Map</div>
+        <div class="card-tools">QGIS · Blender</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nacis">
+  <div class="section-header">
+    <span class="section-tag">05</span>
+    <h2 class="section-title">NACIS + CaGIS</h2>
+  </div>
+  <div class="grid">
+    <div class="card" onclick="openModal('quilt')">
+      <div class="card-images">
+        <img src="Images/RevisedMapQuilt.png" alt="Map Quilt" onerror="this.style.background='#181218'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">NACIS Map Quilt</div>
+        <div class="card-tools">QGIS · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+    <div class="card" onclick="openModal('isleroyale')">
+      <div class="card-images">
+        <img src="Images/IsleRoyale.png" alt="Isle Royale" onerror="this.style.background='#101818'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">Isle Royale — Map Gallery</div>
+        <div class="card-tools">QGIS · Blender · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+    <div class="card" onclick="openModal('cagis')">
+      <div class="card-images">
+        <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble" onerror="this.style.background='#10121e'">
+      </div>
+      <div class="card-overlay">
+        <div class="card-title">CaGIS — NYC Scrabble Map</div>
+        <div class="card-tools">QGIS · Illustrator</div>
+      </div>
+      <div class="card-hint">Click to explore →</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Cooper Price — Cartography Portfolio &nbsp;·&nbsp; Penn State University</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" onclick="closeIfBg(event)">
+  <button class="modal-close" onclick="closeModal()">Close ✕</button>
+  <div class="modal" id="modalContent">
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-info" id="modalInfo"></div>
+  </div>
+</div>
+
+<script>
+const data = {
+  yellowstone: {
+    section: 'Classwork',
+    title: 'Yellowstone Wildfire Risk — LEGO Style',
+    images: ['Images/CooperPriceWorkSample2.png'],
+    desc: 'Created for a final project in a cartography class, this map uses LANDFIRE data to produce a wildfire risk raster for the Yellowstone region. The visual style applies a LEGO brick aesthetic, blending serious spatial analysis with a playful, tactile presentation.',
+    tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
+    link: null
+  },
+  michigan: {
+    section: 'Classwork',
+    title: 'Michigan Internet Access',
+    images: ['Images/CooperPriceWorkSample3.png', 'Images/CooperPriceWorkSample4.png'],
+    desc: 'These maps were created for a class project using Census ACS data to examine internet access across Michigan, with a focus on percent change over time. The paired format allows direct comparison across different temporal snapshots.',
+    tools: ['ArcGIS', 'Adobe Illustrator'],
+    link: null
+  },
+  pfas: {
+    section: 'Research',
+    title: 'PFAS & Roadside Springs Research',
+    images: ['Images/DualMap4.2.png', 'Images/WebMap.png'],
+    desc: 'Through research with Penn State Extension, this project examines water quality in roadside springs and its relationship to surrounding land use — visualized through a bivariate map. Research has been presented at the Penn State Water Conference, PIERS Conference, Penn State Undergraduate Research Exhibit, and UCOWR Conference. Findings were also published in an interactive web map through Penn State Extension.',
+    tools: ['ArcGIS', 'ArcGIS Online', 'Arcade', 'Python', 'Adobe Illustrator'],
+    link: { url: 'https://extension.psu.edu/roadside-springs-map', label: 'View Interactive Web Map →' }
+  },
+  bsa: {
+    section: 'GeoGraphics Lab',
+    title: 'BSA — 7 Mountains Scout Camp',
+    images: ['Images/BSAMap1.png', 'Images/BSAMap2.png', 'Images/BSAMap3.png'],
+    desc: 'Maps created for a local scout camp whose existing materials were outdated ahead of their season-opening events. Working through the GeoGraphics Lab, three versions were produced: high color without elevation, high color with elevation, and low color with elevation — giving the camp flexibility for different print and display contexts.',
+    tools: ['QGIS', 'ArcGIS', 'Eduard', 'Adobe Illustrator', 'Adobe Photoshop'],
+    link: null
+  },
+  millbrook: {
+    section: 'GeoGraphics Lab',
+    title: 'Millbrook Marsh LEGO Maps',
+    images: ['Images/MillbrookStuffCombined.png'],
+    desc: 'Designed for the Millbrook Marsh Visitor Center as a spatial installation for their new building. The LEGO brick aesthetic was chosen to engage a younger audience, making the geographic space approachable and interactive.',
+    tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
+    link: null
+  },
+  mukuru: {
+    section: 'GeoGraphics Lab',
+    title: 'Mukuru, Nairobi — Village Research',
+    images: ['Images/OverviewFINAL6_29.png', 'Images/IndividualVillages6_29_2.png'],
+    desc: 'Printed maps created to support field research on flood risk and climate change in the Mukuru informal settlements of Nairobi. The maps were physically taken to the villages and annotated by local residents, capturing on-the-ground knowledge about environmental impacts and flood vulnerabilities.',
+    tools: ['ArcGIS', 'Adobe Illustrator'],
+    link: null
+  },
+  bear: {
+    section: 'Personal Projects',
+    title: 'Black Bear Hunting Map',
+    images: ['Images/BBHarvest6_29.png'],
+    desc: 'A passion project built to gain experience with Blender as a cartographic tool. Using a QGIS-to-Blender workflow with the GIS plugin, elevation data was extruded into a 3D surface, giving the distribution data physical dimension and depth.',
+    tools: ['QGIS', 'Blender'],
+    link: null
+  },
+  quilt: {
+    section: 'NACIS',
+    title: 'NACIS Map Quilt — Louisville',
+    images: ['Images/RevisedMapQuilt.png'],
+    desc: 'Created as part of the NACIS conference map quilt tradition, where the host city is divided into a grid and each tile is designed independently. All tiles are displayed together at the conference. This tile covers a section of Louisville and uses a Scrabble-board style to label the city\'s neighborhoods.',
+    tools: ['QGIS', 'Adobe Illustrator'],
+    link: null
+  },
+  isleroyale: {
+    section: 'NACIS',
+    title: 'Isle Royale National Park',
+    images: ['Images/IsleRoyale.png'],
+    desc: 'Started as a Christmas gift for a brother who works as a park ranger on Isle Royale, the timeline of this project aligned with the NACIS student map competition — so it was submitted to both. The 3D terrain was rendered in Blender and composited with additional cartographic elements in Illustrator.',
+    tools: ['QGIS', 'Blender', 'Adobe Illustrator', 'Adobe Photoshop'],
+    link: null
+  },
+  cagis: {
+    section: 'CaGIS',
+    title: 'NYC Scrabble Map — CaGIS Competition',
+    images: ['Images/NYCScrabble_Final.png'],
+    desc: 'Submitted to the Cartography and Geographic Information Society (CaGIS) student map competition. Building on the Louisville Scrabble tile made for NACIS, this map expands the concept to a section of New York City — labeling neighborhoods and streets through the lens of a Scrabble board.',
+    tools: ['QGIS', 'Adobe Illustrator'],
+    link: null
+  }
+};
+
+function openModal(key) {
+  const d = data[key];
+  if (!d) return;
+
+  const media = document.getElementById('modalMedia');
+  const info = document.getElementById('modalInfo');
+
+  media.innerHTML = d.images.map(src => `<img src="${src}" alt="${d.title}">`).join('');
+
+  info.innerHTML = `
+    <div class="modal-section-tag">${d.section}</div>
+    <h2 class="modal-title">${d.title}</h2>
+    <p class="modal-desc">${d.desc}</p>
+    <div>
+      <div class="modal-tools-label">Tools Used</div>
+      <div class="tools-list">${d.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}</div>
+    </div>
+    ${d.link ? `<a href="${d.link.url}" target="_blank" class="modal-link">${d.link.label}</a>` : ''}
+  `;
+
+  document.getElementById('modalBg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeIfBg(e) {
+  if (e.target === document.getElementById('modalBg')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
