@@ -254,7 +254,7 @@
   .card:hover .card-overlay { opacity: 1; }
 
   .card-section-tag {
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent2);
@@ -314,6 +314,12 @@
     display: block;
     transition: filter 0.4s ease;
     filter: brightness(0.85) saturate(0.95);
+  }
+
+  /* preserve full extent of a specific image in a group row */
+  .group-row-inner img.contain {
+    object-fit: contain;
+    background: #0a050a;
   }
 
   /* dim ALL images on hover of the row */
@@ -537,11 +543,11 @@
     <div class="nav-name">Cooper Price</div>
   </div>
   <div class="nav-links">
+    <a href="#lab">Lab</a>
+    <a href="#nacis">NACIS</a>
     <a href="#classwork">Classwork</a>
     <a href="#research">Research</a>
-    <a href="#lab">Lab</a>
     <a href="#personal">Personal</a>
-    <a href="#nacis">NACIS</a>
   </div>
 </nav>
 
@@ -558,62 +564,9 @@
   </div>
 </section>
 
-<!-- ── CLASSWORK ── -->
-<div class="section-divider" id="classwork">
-  <span class="section-num">01</span>
-  <span class="section-label">Classwork</span>
-  <div class="section-line"></div>
-</div>
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('yellowstone')">
-    <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk">
-    <div class="card-overlay">
-      <div class="card-section-tag">Classwork</div>
-      <div class="card-title">Yellowstone Wildfire Risk</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-multi" onclick="openModal('michigan')">
-    <div class="card-images">
-      <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet">
-      <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2">
-    </div>
-    <div class="card-overlay">
-      <div class="card-section-tag">Classwork</div>
-      <div class="card-title">Michigan Internet Access</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-</div>
-
-<!-- ── RESEARCH ── -->
-<div class="section-divider" id="research">
-  <span class="section-num">02</span>
-  <span class="section-label">Research</span>
-  <div class="section-line"></div>
-</div>
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('pfas')">
-    <img src="Images/DualMap4.2.png" alt="PFAS Research">
-    <div class="card-overlay">
-      <div class="card-section-tag">Research</div>
-      <div class="card-title">PFAS & Roadside Springs</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-single" onclick="openModal('pfas')">
-    <img src="Images/WebMap.png" alt="PFAS Web Map">
-    <div class="card-overlay">
-      <div class="card-section-tag">Research</div>
-      <div class="card-title">PFAS Web Map</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-</div>
-
 <!-- ── GEOGRAPHICS LAB ── -->
 <div class="section-divider" id="lab">
-  <span class="section-num">03</span>
+  <span class="section-num">01</span>
   <span class="section-label">GeoGraphics Lab</span>
   <div class="section-line"></div>
 </div>
@@ -657,9 +610,93 @@
   </div>
 </div>
 
+<!-- ── NACIS + CAGIS ── -->
+<div class="section-divider" id="nacis">
+  <span class="section-num">02</span>
+  <span class="section-label">NACIS + CaGIS</span>
+  <div class="section-line"></div>
+</div>
+
+<!-- Isle Royale — full-width single, then two scrabble maps side by side -->
+<div class="masonry">
+  <div class="card card-single" onclick="openModal('isleroyale')">
+    <img src="Images/IsleRoyale.png" alt="Isle Royale">
+    <div class="card-overlay">
+      <div class="card-section-tag">NACIS</div>
+      <div class="card-title">Isle Royale National Park</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
+<!-- Two scrabble maps — grouped row, each image opens its own modal -->
+<div class="group-row scrabble-row" id="scrabbleGroup">
+  <div class="group-row-inner cols-2">
+    <img src="Images/RevisedMapQuilt.png" alt="Map Quilt" onclick="openModal('quilt')" style="cursor:pointer">
+    <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble" onclick="openModal('cagis')" style="cursor:pointer">
+    <div class="group-overlay" style="pointer-events:none">
+      <div class="card-section-tag">NACIS + CaGIS</div>
+      <div class="card-title">Scrabble Maps</div>
+      <div class="card-cta">hover · click to explore</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLASSWORK ── -->
+<div class="section-divider" id="classwork">
+  <span class="section-num">03</span>
+  <span class="section-label">Classwork</span>
+  <div class="section-line"></div>
+</div>
+
+<!-- Yellowstone — single card -->
+<div class="masonry">
+  <div class="card card-single" onclick="openModal('yellowstone')">
+    <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk">
+    <div class="card-overlay">
+      <div class="card-section-tag">Classwork</div>
+      <div class="card-title">Yellowstone Wildfire Risk</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
+<!-- Michigan — grouped row: WorkSample3 contain (full extent), WorkSample4 cover -->
+<div class="group-row" onclick="openModal('michigan')">
+  <div class="group-row-inner cols-2">
+    <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" class="contain">
+    <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2">
+    <div class="group-overlay">
+      <div class="card-section-tag">Classwork</div>
+      <div class="card-title">Michigan Internet Access</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RESEARCH ── -->
+<div class="section-divider" id="research">
+  <span class="section-num">04</span>
+  <span class="section-label">Research</span>
+  <div class="section-line"></div>
+</div>
+
+<!-- PFAS — grouped 2-wide row -->
+<div class="group-row" onclick="openModal('pfas')">
+  <div class="group-row-inner cols-2">
+    <img src="Images/DualMap4.2.png" alt="PFAS Research">
+    <img src="Images/WebMap.png" alt="PFAS Web Map">
+    <div class="group-overlay">
+      <div class="card-section-tag">Research</div>
+      <div class="card-title">PFAS &amp; Roadside Springs Research</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
 <!-- ── PERSONAL ── -->
 <div class="section-divider" id="personal">
-  <span class="section-num">04</span>
+  <span class="section-num">05</span>
   <span class="section-label">Personal Projects</span>
   <div class="section-line"></div>
 </div>
@@ -669,39 +706,6 @@
     <div class="card-overlay">
       <div class="card-section-tag">Personal</div>
       <div class="card-title">Black Bear Hunting Map</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-</div>
-
-<!-- ── NACIS + CAGIS ── -->
-<div class="section-divider" id="nacis">
-  <span class="section-num">05</span>
-  <span class="section-label">NACIS + CaGIS</span>
-  <div class="section-line"></div>
-</div>
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('quilt')">
-    <img src="Images/RevisedMapQuilt.png" alt="Map Quilt">
-    <div class="card-overlay">
-      <div class="card-section-tag">NACIS</div>
-      <div class="card-title">Map Quilt — Louisville</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-single" onclick="openModal('isleroyale')">
-    <img src="Images/IsleRoyale.png" alt="Isle Royale">
-    <div class="card-overlay">
-      <div class="card-section-tag">NACIS</div>
-      <div class="card-title">Isle Royale National Park</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-single" onclick="openModal('cagis')">
-    <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble">
-    <div class="card-overlay">
-      <div class="card-section-tag">CaGIS</div>
-      <div class="card-title">NYC Scrabble Map</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
