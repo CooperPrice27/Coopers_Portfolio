@@ -26,7 +26,7 @@
     min-height: 100vh;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -76,10 +76,20 @@
   }
   .nav-links a:hover { color: var(--text); }
 
-  /* HERO */
+  /* ── HERO — two column, full height ── */
   .hero {
-    padding: 120px 40px 56px;
-    max-width: 780px;
+    padding-top: 68px; /* nav height */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+
+  .hero-text {
+    padding: 72px 52px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
   }
 
   .hero-label {
@@ -87,16 +97,16 @@
     font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     font-weight: 400;
   }
 
   .hero h1 {
     font-weight: 300;
-    font-size: clamp(44px, 6vw, 76px);
-    line-height: 1.05;
+    font-size: clamp(36px, 4vw, 58px);
+    line-height: 1.1;
     color: var(--text);
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
 
   .hero h1 em {
@@ -106,13 +116,39 @@
 
   .hero p {
     color: rgba(239,185,212,0.45);
-    line-height: 1.8;
-    max-width: 400px;
+    line-height: 1.85;
     font-size: 14px;
     font-weight: 300;
+    max-width: 400px;
+    margin-bottom: 36px;
   }
 
-  /* SECTION DIVIDER */
+  .hero-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(162,55,126,0.45);
+    text-transform: uppercase;
+  }
+
+  /* right panel — big logo */
+  .hero-logo-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    background: rgba(94,22,78,0.05);
+  }
+
+  .hero-logo-panel img {
+    width: min(60%, 360px);
+    height: auto;
+    opacity: 0.72;
+    filter: drop-shadow(0 0 80px rgba(162,55,126,0.25));
+    transition: opacity 0.3s;
+  }
+  .hero-logo-panel img:hover { opacity: 0.9; }
+
+  /* ── SECTION DIVIDER ── */
   .section-divider {
     display: flex;
     align-items: center;
@@ -142,7 +178,7 @@
     background: var(--border);
   }
 
-  /* MASONRY GRID */
+  /* ── MASONRY GRID ── */
   .masonry {
     padding: 0 40px;
     columns: 3;
@@ -152,7 +188,7 @@
   @media (max-width: 1000px) { .masonry { columns: 2; } }
   @media (max-width: 600px)  { .masonry { columns: 1; } }
 
-  /* CARD */
+  /* ── STANDARD CARD ── */
   .card {
     position: relative;
     overflow: hidden;
@@ -163,7 +199,6 @@
     background: var(--surface);
   }
 
-  /* Single image — natural height */
   .card-single img {
     width: 100%;
     height: auto;
@@ -174,10 +209,10 @@
 
   .card-single:hover img {
     transform: scale(1.03);
-    filter: brightness(0.3) saturate(0.6);
+    filter: brightness(0.28) saturate(0.6);
   }
 
-  /* Multi image — fixed height side by side */
+  /* multi-image card (e.g. Michigan) */
   .card-multi .card-images {
     display: flex;
     width: 100%;
@@ -198,10 +233,10 @@
   }
 
   .card-multi:hover .card-images img {
-    filter: brightness(0.3) saturate(0.6);
+    filter: brightness(0.28) saturate(0.6);
   }
 
-  /* HOVER OVERLAY — centered text */
+  /* hover overlay — centered */
   .card-overlay {
     position: absolute;
     inset: 0;
@@ -254,7 +289,73 @@
   }
   .card:hover .card-cta { transform: translateY(0); }
 
-  /* MODAL */
+  /* ── GROUPED ROW — hover affects all images together ── */
+  /* wrapper sits outside masonry, spans full content width */
+  .group-row {
+    padding: 0 40px;
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+
+  .group-row-inner {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  .group-row-inner.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .group-row-inner.cols-2 { grid-template-columns: 1fr 1fr; }
+
+  .group-row-inner img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease;
+    filter: brightness(0.85) saturate(0.95);
+  }
+
+  /* dim ALL images on hover of the row */
+  .group-row:hover .group-row-inner img {
+    filter: brightness(0.28) saturate(0.6);
+  }
+
+  /* overlay spans the full row */
+  .group-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .group-row:hover .group-overlay { opacity: 1; }
+
+  .group-overlay .card-section-tag {
+    transform: translateY(8px);
+    transition: transform 0.3s;
+  }
+  .group-row:hover .group-overlay .card-section-tag { transform: translateY(0); }
+
+  .group-overlay .card-title {
+    transform: translateY(8px);
+    transition: transform 0.3s 0.03s;
+  }
+  .group-row:hover .group-overlay .card-title { transform: translateY(0); }
+
+  .group-overlay .card-cta {
+    transform: translateY(8px);
+    transition: transform 0.3s 0.06s;
+  }
+  .group-row:hover .group-overlay .card-cta { transform: translateY(0); }
+
+  /* ── MODAL ── */
   .modal-bg {
     position: fixed;
     inset: 0;
@@ -387,7 +488,7 @@
   }
   .modal-close:hover { color: var(--text); border-color: var(--muted); }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
     padding: 56px 40px 32px;
     color: rgba(162,55,126,0.45);
@@ -409,12 +510,19 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--deep); }
 
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
-    .hero { padding: 100px 20px 40px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { border-right: none; border-bottom: 1px solid var(--border); padding: 100px 24px 48px; }
+    .hero-logo-panel { padding: 40px 24px; }
+    .hero-logo-panel img { width: 50%; }
     .section-divider { padding: 40px 20px 12px; }
     .masonry { padding: 0 20px; columns: 1; }
+    .group-row { padding: 0 20px; }
+    .group-row-inner.cols-3 { grid-template-columns: 1fr; }
+    .group-row-inner img { height: 200px; }
     .modal { grid-template-columns: 1fr; }
     .modal-info { padding: 24px 20px; }
   }
@@ -422,6 +530,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-left">
     <img src="Images/Logo_noBackground.png" alt="Logo" class="nav-logo">
@@ -436,13 +545,20 @@
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-label">Cartography & Geographic Design</div>
-  <h1>Making places<br><em>legible.</em></h1>
-  <p>Maps, spatial analysis, and geographic visualization — from wildfire risk in Yellowstone to flood mapping in Nairobi.</p>
+  <div class="hero-text">
+    <div class="hero-label">Cartography & Geographic Design</div>
+    <h1>Making places<br><em>legible.</em></h1>
+    <p>Your name, your tagline, your bio goes here. Tell visitors who you are, what you do, and what drives your work. This is placeholder text — update it whenever you're ready.</p>
+    <div class="hero-meta">Penn State University &nbsp;·&nbsp; GeoGraphics Lab</div>
+  </div>
+  <div class="hero-logo-panel">
+    <img src="Images/Logo_noBackground.png" alt="Cooper Price Logo">
+  </div>
 </section>
 
-<!-- CLASSWORK -->
+<!-- ── CLASSWORK ── -->
 <div class="section-divider" id="classwork">
   <span class="section-num">01</span>
   <span class="section-label">Classwork</span>
@@ -470,7 +586,7 @@
   </div>
 </div>
 
-<!-- RESEARCH -->
+<!-- ── RESEARCH ── -->
 <div class="section-divider" id="research">
   <span class="section-num">02</span>
   <span class="section-label">Research</span>
@@ -495,37 +611,29 @@
   </div>
 </div>
 
-<!-- LAB -->
+<!-- ── GEOGRAPHICS LAB ── -->
 <div class="section-divider" id="lab">
   <span class="section-num">03</span>
   <span class="section-label">GeoGraphics Lab</span>
   <div class="section-line"></div>
 </div>
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('bsa')">
+
+<!-- BSA — grouped 3-wide row -->
+<div class="group-row" onclick="openModal('bsa')">
+  <div class="group-row-inner cols-3">
     <img src="Images/BSAMap1.png" alt="BSA Map 1">
-    <div class="card-overlay">
-      <div class="card-section-tag">GeoGraphics Lab</div>
-      <div class="card-title">BSA — 7 Mountains Camp</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-single" onclick="openModal('bsa')">
     <img src="Images/BSAMap2.png" alt="BSA Map 2">
-    <div class="card-overlay">
-      <div class="card-section-tag">GeoGraphics Lab</div>
-      <div class="card-title">BSA — 7 Mountains Camp</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-single" onclick="openModal('bsa')">
     <img src="Images/BSAMap3.png" alt="BSA Map 3">
-    <div class="card-overlay">
+    <div class="group-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
-      <div class="card-title">BSA — 7 Mountains Camp</div>
+      <div class="card-title">BSA — 7 Mountains Scout Camp</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
+</div>
+
+<!-- Millbrook — single card in masonry -->
+<div class="masonry">
   <div class="card card-single" onclick="openModal('millbrook')">
     <img src="Images/MillbrookStuffCombined.png" alt="Millbrook">
     <div class="card-overlay">
@@ -534,25 +642,22 @@
       <div class="card-cta">click to explore</div>
     </div>
   </div>
-  <div class="card card-single" onclick="openModal('mukuru')">
+</div>
+
+<!-- Mukuru — grouped 2-wide row -->
+<div class="group-row" onclick="openModal('mukuru')">
+  <div class="group-row-inner cols-2">
     <img src="Images/OverviewFINAL6_29.png" alt="Mukuru Overview">
-    <div class="card-overlay">
-      <div class="card-section-tag">GeoGraphics Lab</div>
-      <div class="card-title">Mukuru, Nairobi</div>
-      <div class="card-cta">click to explore</div>
-    </div>
-  </div>
-  <div class="card card-single" onclick="openModal('mukuru')">
     <img src="Images/IndividualVillages6_29_2.png" alt="Mukuru Villages">
-    <div class="card-overlay">
+    <div class="group-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
-      <div class="card-title">Mukuru, Nairobi</div>
+      <div class="card-title">Mukuru, Nairobi — Village Research</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
 </div>
 
-<!-- PERSONAL -->
+<!-- ── PERSONAL ── -->
 <div class="section-divider" id="personal">
   <span class="section-num">04</span>
   <span class="section-label">Personal Projects</span>
@@ -569,7 +674,7 @@
   </div>
 </div>
 
-<!-- NACIS + CAGIS -->
+<!-- ── NACIS + CAGIS ── -->
 <div class="section-divider" id="nacis">
   <span class="section-num">05</span>
   <span class="section-label">NACIS + CaGIS</span>
