@@ -180,7 +180,7 @@
 
   /* ── MASONRY GRID ── */
   .masonry {
-    padding: 0 40px;
+    padding: 0 120px;
     columns: 3;
     column-gap: 6px;
   }
@@ -292,7 +292,7 @@
   /* ── GROUPED ROW — hover affects all images together ── */
   /* wrapper sits outside masonry, spans full content width */
   .group-row {
-    padding: 0 40px;
+    padding: 0 120px;
     margin-bottom: 6px;
     cursor: pointer;
   }
@@ -363,6 +363,27 @@
     transition: transform 0.3s 0.06s;
   }
   .group-row:hover .group-overlay .card-cta { transform: translateY(0); }
+
+
+  /* subtle dark purple grid overlay on all images */
+  .card::after,
+  .group-row-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(94,22,78,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,22,78,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* keep overlay text above the grid */
+  .card-overlay,
+  .group-overlay {
+    z-index: 2;
+  }
 
   /* ── MODAL ── */
   .modal-bg {
