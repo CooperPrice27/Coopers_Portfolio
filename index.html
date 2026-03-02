@@ -306,6 +306,9 @@
 
   .group-row-inner.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .group-row-inner.cols-2 { grid-template-columns: 1fr 1fr; }
+  .group-row-inner.cols-1-stack { grid-template-columns: 1fr; }
+  .group-row-inner.cols-1-stack img { height: auto; max-height: 480px; }
+  .group-row-inner.cols-1-stack img.contain { object-fit: contain; background: #0a050a; height: auto; }
 
   .group-row-inner img {
     width: 100%;
@@ -661,9 +664,9 @@
   </div>
 </div>
 
-<!-- Michigan — grouped row: WorkSample3 contain (full extent), WorkSample4 cover -->
+<!-- Michigan — grouped row: stacked vertically, WorkSample3 full extent -->
 <div class="group-row" onclick="openModal('michigan')">
-  <div class="group-row-inner cols-2">
+  <div class="group-row-inner cols-1-stack">
     <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" class="contain">
     <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2">
     <div class="group-overlay">
