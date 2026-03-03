@@ -26,173 +26,30 @@
     min-height: 100vh;
   }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 40px;
-    background: rgba(14,14,14,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(58,31,52,0.5);
-  }
-
-  .nav-left { display: flex; align-items: center; gap: 14px; }
-
-  .nav-logo {
-    height: 30px; width: auto;
-    opacity: 0.5; transition: opacity 0.2s;
-  }
-  .nav-logo:hover { opacity: 0.8; }
-
-  .nav-name {
-    font-weight: 500; font-size: 16px;
-    letter-spacing: 0.06em; color: var(--text);
-  }
-
-  .nav-links { display: flex; gap: 28px; }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  /* ── HERO ── */
-  .hero {
-    padding-top: 68px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-  }
-
-  .hero-text {
-    padding: 72px 52px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--border);
-  }
-
-  .hero-label {
-    color: var(--accent2);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    font-weight: 400;
-  }
-
-  .hero h1 {
-    font-weight: 300;
-    font-size: clamp(36px, 4vw, 58px);
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 24px;
-  }
-
-  .hero h1 em { font-style: italic; color: var(--accent2); }
-
-  .hero p {
-    color: rgba(239,185,212,0.45);
-    line-height: 1.85;
-    font-size: 14px;
-    font-weight: 300;
-    max-width: 400px;
-    margin-bottom: 36px;
-  }
-
-  .hero-meta {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: rgba(162,55,126,0.45);
-    text-transform: uppercase;
-  }
-
-  .hero-logo-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px;
-    background: rgba(94,22,78,0.05);
-  }
-
-  .hero-logo-panel img {
-    width: min(60%, 360px);
-    height: auto;
-    opacity: 0.72;
-    filter: drop-shadow(0 0 80px rgba(162,55,126,0.25));
-    transition: opacity 0.3s;
-  }
-  .hero-logo-panel img:hover { opacity: 0.9; }
-
-  /* ── SECTION DIVIDER ── */
-  .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 52px 40px 14px;
-  }
-
-  .section-num {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--deep);
-    font-weight: 500;
-  }
-
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 400;
-    white-space: nowrap;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── PORTFOLIO GRID ──────────────────────────────────────
-     6-column base. Cards span columns to match their preview:
-       1x1 preview → .span-1  (aspect-ratio: 1/1)
-       2x1 preview → .span-2  (aspect-ratio: 2/1)
-       3x1 preview → .span-3  (aspect-ratio: 3/1)
-  ─────────────────────────────────────────────────────── */
+  /* PORTFOLIO ROW */
   .portfolio-grid {
     padding: 0 180px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 6px;
     margin-bottom: 6px;
-    justify-items: center;
+    justify-content: center;
+    align-items: flex-start;
   }
 
-  .span-1 { grid-column: span 1; }
-  .span-2 { grid-column: span 2; }
-  .span-3 { grid-column: span 3; }
-
-  /* ── CARD ── */
+  /* CARD */
   .card {
     position: relative;
     overflow: hidden;
     cursor: pointer;
     background: var(--surface);
+    height: 340px;
+    flex-shrink: 0;
   }
 
-  .card.ratio-1x1 { aspect-ratio: 1 / 1; }
-  .card.ratio-2x1 { aspect-ratio: 2 / 1; }
-  .card.ratio-3x1 { aspect-ratio: 3 / 1; }
+  .card.ratio-1x1 { width: 340px; }
+  .card.ratio-2x1 { width: 686px; }
+  .card.ratio-3x1 { width: 1032px; }
 
   /* preview image fills the card */
   .card .preview-img {
@@ -414,9 +271,8 @@
     .hero-logo-panel { padding: 40px 24px; }
     .hero-logo-panel img { width: 50%; }
     .section-divider { padding: 40px 20px 12px; }
-    .portfolio-grid { padding: 0 20px; grid-template-columns: repeat(2, 1fr); }
-    .span-1, .span-2, .span-3 { grid-column: span 2; }
-    .card.ratio-1x1, .card.ratio-2x1, .card.ratio-3x1 { aspect-ratio: 2 / 1; }
+    .portfolio-grid { padding: 0 20px; flex-direction: column; align-items: stretch; }
+    .card { height: 200px; width: 100% !important; }
     .modal { grid-template-columns: 1fr; }
     .modal-info { padding: 24px 20px; }
   }
