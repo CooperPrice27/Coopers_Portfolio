@@ -78,7 +78,7 @@
 
   /* ── HERO — two column, full height ── */
   .hero {
-    padding-top: 68px; /* nav height */
+    padding-top: 68px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
@@ -130,7 +130,6 @@
     text-transform: uppercase;
   }
 
-  /* right panel — big logo */
   .hero-logo-panel {
     display: flex;
     align-items: center;
@@ -198,28 +197,30 @@
     cursor: pointer;
     break-inside: avoid;
     background: var(--surface);
+    /* ── 1:1 ASPECT RATIO ── */
+    aspect-ratio: 1 / 1;
   }
 
   .card-single img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
     transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
     filter: brightness(0.85) saturate(0.95);
+    /* transform-origin stays center unless you set object-position differently */
   }
 
   .card-single:hover img {
-    transform: scale(1.03);
     filter: brightness(0.28) saturate(0.6);
   }
 
-  /* multi-image card (e.g. Michigan) */
+  /* multi-image card */
   .card-multi .card-images {
     display: flex;
     width: 100%;
-    height: 300px;
+    height: 100%;
   }
 
   .card-multi .card-images img {
@@ -292,8 +293,7 @@
   }
   .card:hover .card-cta { transform: translateY(0); }
 
-  /* ── GROUPED ROW — hover affects all images together ── */
-  /* wrapper sits outside masonry, spans full content width */
+  /* ── GROUPED ROW ── */
   .group-row {
     padding: 0 180px;
     margin-bottom: 6px;
@@ -305,36 +305,35 @@
     display: grid;
     gap: 6px;
     overflow: hidden;
+    /* ── 1:1 ASPECT RATIO for group rows ── */
+    aspect-ratio: 1 / 1;
   }
 
+  /* For multi-column rows the aspect ratio applies to the whole group.
+     Each image fills its grid cell fully. */
   .group-row-inner.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .group-row-inner.cols-2 { grid-template-columns: 1fr 1fr; }
   .group-row-inner.cols-1-stack { grid-template-columns: 1fr; }
-  .group-row-inner.cols-1-stack img { height: 300px; object-fit: cover; object-position: center; }
-  .group-row-inner.cols-1-stack img.contain { object-fit: contain; background: #0a050a; }
 
   .group-row-inner img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
-    transition: filter 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
     filter: brightness(0.85) saturate(0.95);
   }
 
-  /* preserve full extent of a specific image in a group row */
   .group-row-inner img.contain {
     object-fit: contain;
     background: #0a050a;
   }
 
-  /* dim ALL images on hover of the row */
   .group-row:hover .group-row-inner img {
     filter: brightness(0.28) saturate(0.6);
   }
 
-  /* overlay spans the full row */
   .group-overlay {
     position: absolute;
     inset: 0;
@@ -368,6 +367,24 @@
   }
   .group-row:hover .group-overlay .card-cta { transform: translateY(0); }
 
+  /* subtle dark purple grid overlay */
+  .card::after,
+  .group-row-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(94,22,78,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,22,78,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .card-overlay,
+  .group-overlay {
+    z-index: 2;
+  }
 
   /* ── MODAL ── */
   .modal-bg {
@@ -536,9 +553,6 @@
     .masonry { padding: 0 20px; grid-template-columns: 1fr; }
     .group-row { padding: 0 20px; }
     .group-row-inner.cols-3 { grid-template-columns: 1fr; }
-    .group-row-inner img { height: 200px; }
-    .modal { grid-template-columns: 1fr; }
-    .modal-info { padding: 24px 20px; }
   }
 </style>
 </head>
@@ -579,12 +593,23 @@
   <div class="section-line"></div>
 </div>
 
+<!-- =====================================================================
+     🔍 ZOOM & POSITION CONTROLS — GEOGRAPHICS LAB
+     For each image below, adjust:
+       style="transform: scale(X); object-position: X% Y%;"
+     scale(1.0) = no zoom, scale(1.5) = 50% zoomed in, scale(2.0) = 100% zoomed in
+     object-position: "left% top%" — e.g. "50% 50%" = center, "0% 0%" = top-left
+     ===================================================================== -->
+
 <!-- BSA — grouped 3-wide row -->
 <div class="group-row" onclick="openModal('bsa')">
   <div class="group-row-inner cols-3">
-    <img src="Images/BSAMap1.png" alt="BSA Map 1">
-    <img src="Images/BSAMap2.png" alt="BSA Map 2">
-    <img src="Images/BSAMap3.png" alt="BSA Map 3">
+    <img src="Images/BSAMap1.png" alt="BSA Map 1"
+         style="transform: scale(1.0); object-position: 50% 50%;">
+    <img src="Images/BSAMap2.png" alt="BSA Map 2"
+         style="transform: scale(1.0); object-position: 50% 50%;">
+    <img src="Images/BSAMap3.png" alt="BSA Map 3"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="group-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
       <div class="card-title">BSA — 7 Mountains Scout Camp</div>
@@ -596,7 +621,9 @@
 <!-- Millbrook — single card in masonry -->
 <div class="masonry">
   <div class="card card-single" onclick="openModal('millbrook')">
-    <img src="Images/MillbrookStuffCombined.png" alt="Millbrook">
+    <!-- 🔍 ZOOM: Millbrook -->
+    <img src="Images/MillbrookStuffCombined.png" alt="Millbrook"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="card-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
       <div class="card-title">Millbrook Marsh LEGO Maps</div>
@@ -608,8 +635,11 @@
 <!-- Mukuru — grouped 2-wide row -->
 <div class="group-row" onclick="openModal('mukuru')">
   <div class="group-row-inner cols-2">
-    <img src="Images/OverviewFINAL6_29.png" alt="Mukuru Overview">
-    <img src="Images/IndividualVillages6_29_2.png" alt="Mukuru Villages">
+    <!-- 🔍 ZOOM: Mukuru -->
+    <img src="Images/OverviewFINAL6_29.png" alt="Mukuru Overview"
+         style="transform: scale(1.0); object-position: 50% 50%;">
+    <img src="Images/IndividualVillages6_29_2.png" alt="Mukuru Villages"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="group-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
       <div class="card-title">Mukuru, Nairobi — Village Research</div>
@@ -625,10 +655,15 @@
   <div class="section-line"></div>
 </div>
 
-<!-- Isle Royale — full-width single, then two scrabble maps side by side -->
+<!-- =====================================================================
+     🔍 ZOOM & POSITION CONTROLS — NACIS + CAGIS
+     ===================================================================== -->
+
 <div class="masonry">
   <div class="card card-single" onclick="openModal('isleroyale')">
-    <img src="Images/IsleRoyale.png" alt="Isle Royale">
+    <!-- 🔍 ZOOM: Isle Royale -->
+    <img src="Images/IsleRoyale.png" alt="Isle Royale"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="card-overlay">
       <div class="card-section-tag">NACIS</div>
       <div class="card-title">Isle Royale National Park</div>
@@ -637,11 +672,14 @@
   </div>
 </div>
 
-<!-- Two scrabble maps — grouped row, each image opens its own modal -->
+<!-- Two scrabble maps — grouped row -->
 <div class="group-row scrabble-row" id="scrabbleGroup">
   <div class="group-row-inner cols-2">
-    <img src="Images/RevisedMapQuilt.png" alt="Map Quilt" onclick="openModal('quilt')" style="cursor:pointer">
-    <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble" onclick="openModal('cagis')" style="cursor:pointer">
+    <!-- 🔍 ZOOM: Scrabble maps -->
+    <img src="Images/RevisedMapQuilt.png" alt="Map Quilt"
+         onclick="openModal('quilt')" style="cursor:pointer; transform: scale(1.0); object-position: 50% 50%;">
+    <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble"
+         onclick="openModal('cagis')" style="cursor:pointer; transform: scale(1.0); object-position: 50% 50%;">
     <div class="group-overlay" style="pointer-events:none">
       <div class="card-section-tag">NACIS + CaGIS</div>
       <div class="card-title">Scrabble Maps</div>
@@ -657,10 +695,15 @@
   <div class="section-line"></div>
 </div>
 
-<!-- Yellowstone — single card -->
+<!-- =====================================================================
+     🔍 ZOOM & POSITION CONTROLS — CLASSWORK
+     ===================================================================== -->
+
 <div class="masonry">
   <div class="card card-single" onclick="openModal('yellowstone')">
-    <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk">
+    <!-- 🔍 ZOOM: Yellowstone -->
+    <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="card-overlay">
       <div class="card-section-tag">Classwork</div>
       <div class="card-title">Yellowstone Wildfire Risk</div>
@@ -669,11 +712,15 @@
   </div>
 </div>
 
-<!-- Michigan — grouped row: stacked vertically, WorkSample3 full extent -->
+<!-- Michigan — grouped row: stacked vertically -->
 <div class="group-row" onclick="openModal('michigan')">
   <div class="group-row-inner cols-1-stack">
-    <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" class="contain">
-    <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2">
+    <!-- 🔍 ZOOM: Michigan — WorkSample3 (contain, so scale/position have less effect) -->
+    <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" class="contain"
+         style="transform: scale(1.0); object-position: 50% 50%;">
+    <!-- 🔍 ZOOM: Michigan — WorkSample4 -->
+    <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="group-overlay">
       <div class="card-section-tag">Classwork</div>
       <div class="card-title">Michigan Internet Access</div>
@@ -689,11 +736,18 @@
   <div class="section-line"></div>
 </div>
 
+<!-- =====================================================================
+     🔍 ZOOM & POSITION CONTROLS — RESEARCH
+     ===================================================================== -->
+
 <!-- PFAS — grouped 2-wide row -->
 <div class="group-row" onclick="openModal('pfas')">
   <div class="group-row-inner cols-2">
-    <img src="Images/DualMap4.2.png" alt="PFAS Research">
-    <img src="Images/WebMap.png" alt="PFAS Web Map">
+    <!-- 🔍 ZOOM: PFAS -->
+    <img src="Images/DualMap4.2.png" alt="PFAS Research"
+         style="transform: scale(1.0); object-position: 50% 50%;">
+    <img src="Images/WebMap.png" alt="PFAS Web Map"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="group-overlay">
       <div class="card-section-tag">Research</div>
       <div class="card-title">PFAS &amp; Roadside Springs Research</div>
@@ -708,9 +762,16 @@
   <span class="section-label">Personal Projects</span>
   <div class="section-line"></div>
 </div>
+
+<!-- =====================================================================
+     🔍 ZOOM & POSITION CONTROLS — PERSONAL
+     ===================================================================== -->
+
 <div class="masonry">
   <div class="card card-single" onclick="openModal('bear')">
-    <img src="Images/BBHarvest6_29.png" alt="Black Bear">
+    <!-- 🔍 ZOOM: Black Bear -->
+    <img src="Images/BBHarvest6_29.png" alt="Black Bear"
+         style="transform: scale(1.0); object-position: 50% 50%;">
     <div class="card-overlay">
       <div class="card-section-tag">Personal</div>
       <div class="card-title">Black Bear Hunting Map</div>
