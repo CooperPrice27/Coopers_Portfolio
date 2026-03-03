@@ -40,31 +40,20 @@
     border-bottom: 1px solid rgba(58,31,52,0.5);
   }
 
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
+  .nav-left { display: flex; align-items: center; gap: 14px; }
 
   .nav-logo {
-    height: 30px;
-    width: auto;
-    opacity: 0.5;
-    transition: opacity 0.2s;
+    height: 30px; width: auto;
+    opacity: 0.5; transition: opacity 0.2s;
   }
   .nav-logo:hover { opacity: 0.8; }
 
   .nav-name {
-    font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 0.06em;
-    color: var(--text);
+    font-weight: 500; font-size: 16px;
+    letter-spacing: 0.06em; color: var(--text);
   }
 
-  .nav-links {
-    display: flex;
-    gap: 28px;
-  }
+  .nav-links { display: flex; gap: 28px; }
 
   .nav-links a {
     color: var(--muted);
@@ -76,7 +65,7 @@
   }
   .nav-links a:hover { color: var(--text); }
 
-  /* ── HERO — two column, full height ── */
+  /* ── HERO ── */
   .hero {
     padding-top: 68px;
     display: grid;
@@ -109,10 +98,7 @@
     margin-bottom: 24px;
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent2);
-  }
+  .hero h1 em { font-style: italic; color: var(--accent2); }
 
   .hero p {
     color: rgba(239,185,212,0.45);
@@ -177,31 +163,38 @@
     background: var(--border);
   }
 
-  /* ── MASONRY GRID ── */
-  .masonry {
-    padding: 0 180px;
+  /* ── PORTFOLIO GRID ──────────────────────────────────────
+     6-column base. Cards span columns to match their preview:
+       1x1 preview → .span-1  (aspect-ratio: 1/1)
+       2x1 preview → .span-2  (aspect-ratio: 2/1)
+       3x1 preview → .span-3  (aspect-ratio: 3/1)
+  ─────────────────────────────────────────────────────── */
+  .portfolio-grid {
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 6px;
+    margin-bottom: 6px;
   }
 
-  @media (max-width: 1000px) { .masonry { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px)  { .masonry { grid-template-columns: 1fr; } }
+  .span-1 { grid-column: span 1; }
+  .span-2 { grid-column: span 2; }
+  .span-3 { grid-column: span 3; }
 
-  /* ── STANDARD CARD ── */
+  /* ── CARD ── */
   .card {
     position: relative;
     overflow: hidden;
-    display: block;
-    margin-bottom: 6px;
     cursor: pointer;
-    break-inside: avoid;
     background: var(--surface);
-    /* ── 1:1 ASPECT RATIO ── */
-    aspect-ratio: 1 / 1;
   }
 
-  .card-single img {
+  .card.ratio-1x1 { aspect-ratio: 1 / 1; }
+  .card.ratio-2x1 { aspect-ratio: 2 / 1; }
+  .card.ratio-3x1 { aspect-ratio: 3 / 1; }
+
+  /* preview image fills the card */
+  .card .preview-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -209,38 +202,14 @@
     display: block;
     transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
     filter: brightness(0.85) saturate(0.95);
-    /* transform-origin stays center unless you set object-position differently */
   }
 
-  .card-single:hover img {
+  .card:hover .preview-img {
+    transform: scale(1.03);
     filter: brightness(0.28) saturate(0.6);
   }
 
-  /* multi-image card */
-  .card-multi .card-images {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-
-  .card-multi .card-images img {
-    flex: 1;
-    min-width: 0;
-    object-fit: cover;
-    display: block;
-    transition: filter 0.4s ease;
-    filter: brightness(0.85) saturate(0.95);
-  }
-
-  .card-multi .card-images img + img {
-    border-left: 4px solid var(--bg);
-  }
-
-  .card-multi:hover .card-images img {
-    filter: brightness(0.28) saturate(0.6);
-  }
-
-  /* hover overlay — centered */
+  /* hover overlay */
   .card-overlay {
     position: absolute;
     inset: 0;
@@ -253,6 +222,7 @@
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
+    z-index: 2;
   }
 
   .card:hover .card-overlay { opacity: 1; }
@@ -267,7 +237,6 @@
     transition: transform 0.3s;
     font-weight: 400;
   }
-
   .card:hover .card-section-tag { transform: translateY(0); }
 
   .card-title {
@@ -279,7 +248,6 @@
     transition: transform 0.3s 0.03s;
     text-shadow: 0 2px 16px rgba(0,0,0,0.9);
   }
-
   .card:hover .card-title { transform: translateY(0); }
 
   .card-cta {
@@ -293,83 +261,8 @@
   }
   .card:hover .card-cta { transform: translateY(0); }
 
-  /* ── GROUPED ROW ── */
-  .group-row {
-    padding: 0 180px;
-    margin-bottom: 6px;
-    cursor: pointer;
-  }
-
-  .group-row-inner {
-    position: relative;
-    display: grid;
-    gap: 6px;
-    overflow: hidden;
-    /* ── 1:1 ASPECT RATIO for group rows ── */
-    aspect-ratio: 1 / 1;
-  }
-
-  /* For multi-column rows the aspect ratio applies to the whole group.
-     Each image fills its grid cell fully. */
-  .group-row-inner.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-  .group-row-inner.cols-2 { grid-template-columns: 1fr 1fr; }
-  .group-row-inner.cols-1-stack { grid-template-columns: 1fr; }
-
-  .group-row-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
-    filter: brightness(0.85) saturate(0.95);
-  }
-
-  .group-row-inner img.contain {
-    object-fit: contain;
-    background: #0a050a;
-  }
-
-  .group-row:hover .group-row-inner img {
-    filter: brightness(0.28) saturate(0.6);
-  }
-
-  .group-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .group-row:hover .group-overlay { opacity: 1; }
-
-  .group-overlay .card-section-tag {
-    transform: translateY(8px);
-    transition: transform 0.3s;
-  }
-  .group-row:hover .group-overlay .card-section-tag { transform: translateY(0); }
-
-  .group-overlay .card-title {
-    transform: translateY(8px);
-    transition: transform 0.3s 0.03s;
-  }
-  .group-row:hover .group-overlay .card-title { transform: translateY(0); }
-
-  .group-overlay .card-cta {
-    transform: translateY(8px);
-    transition: transform 0.3s 0.06s;
-  }
-  .group-row:hover .group-overlay .card-cta { transform: translateY(0); }
-
-  /* subtle dark purple grid overlay */
-  .card::after,
-  .group-row-inner::after {
+  /* subtle grid overlay */
+  .card::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -379,11 +272,6 @@
     background-size: 32px 32px;
     pointer-events: none;
     z-index: 1;
-  }
-
-  .card-overlay,
-  .group-overlay {
-    z-index: 2;
   }
 
   /* ── MODAL ── */
@@ -400,10 +288,7 @@
     transition: opacity 0.3s;
   }
 
-  .modal-bg.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+  .modal-bg.open { opacity: 1; pointer-events: all; }
 
   .modal {
     width: 92vw;
@@ -429,10 +314,7 @@
     max-height: 90vh;
   }
 
-  .modal-media img {
-    width: 100%;
-    display: block;
-  }
+  .modal-media img { width: 100%; display: block; }
 
   .modal-info {
     padding: 44px 36px;
@@ -474,11 +356,7 @@
     font-weight: 400;
   }
 
-  .tools-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .tools-list { display: flex; flex-wrap: wrap; gap: 6px; }
 
   .tool-tag {
     font-size: 11px;
@@ -504,8 +382,7 @@
 
   .modal-close {
     position: fixed;
-    top: 24px;
-    right: 32px;
+    top: 24px; right: 32px;
     z-index: 300;
     background: none;
     border: 1px solid var(--border);
@@ -532,17 +409,14 @@
     gap: 14px;
   }
 
-  footer img {
-    height: 22px;
-    opacity: 0.25;
-  }
+  footer img { height: 22px; opacity: 0.25; }
 
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--deep); }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -550,9 +424,11 @@
     .hero-logo-panel { padding: 40px 24px; }
     .hero-logo-panel img { width: 50%; }
     .section-divider { padding: 40px 20px 12px; }
-    .masonry { padding: 0 20px; grid-template-columns: 1fr; }
-    .group-row { padding: 0 20px; }
-    .group-row-inner.cols-3 { grid-template-columns: 1fr; }
+    .portfolio-grid { padding: 0 12px; grid-template-columns: repeat(2, 1fr); }
+    .span-1, .span-2, .span-3 { grid-column: span 2; }
+    .card.ratio-1x1, .card.ratio-2x1, .card.ratio-3x1 { aspect-ratio: 2 / 1; }
+    .modal { grid-template-columns: 1fr; }
+    .modal-info { padding: 24px 20px; }
   }
 </style>
 </head>
@@ -570,6 +446,7 @@
     <a href="#classwork">Classwork</a>
     <a href="#research">Research</a>
     <a href="#personal">Personal</a>
+    <a href="#misc">Misc</a>
   </div>
 </nav>
 
@@ -586,61 +463,41 @@
   </div>
 </section>
 
-<!-- ── GEOGRAPHICS LAB ── -->
+
+<!-- ══════════════════════════════════════════
+     01 — GEOGRAPHICS LAB
+     ══════════════════════════════════════════ -->
 <div class="section-divider" id="lab">
   <span class="section-num">01</span>
   <span class="section-label">GeoGraphics Lab</span>
   <div class="section-line"></div>
 </div>
 
-<!-- =====================================================================
-     🔍 ZOOM & POSITION CONTROLS — GEOGRAPHICS LAB
-     For each image below, adjust:
-       style="transform: scale(X); object-position: X% Y%;"
-     scale(1.0) = no zoom, scale(1.5) = 50% zoomed in, scale(2.0) = 100% zoomed in
-     object-position: "left% top%" — e.g. "50% 50%" = center, "0% 0%" = top-left
-     ===================================================================== -->
-
-<!-- BSA — grouped 3-wide row -->
-<div class="group-row" onclick="openModal('bsa')">
-  <div class="group-row-inner cols-3">
-    <img src="Images/BSAMap1.png" alt="BSA Map 1"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <img src="Images/BSAMap2.png" alt="BSA Map 2"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <img src="Images/BSAMap3.png" alt="BSA Map 3"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <div class="group-overlay">
+<div class="portfolio-grid">
+  <!-- BSA: 3x1 preview → spans 3 of 6 cols -->
+  <div class="card ratio-3x1 span-3" onclick="openModal('bsa')">
+    <img class="preview-img" src="Images/BSA_Trail_Maps_3x1.jpg" alt="BSA Scout Camp">
+    <div class="card-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
       <div class="card-title">BSA — 7 Mountains Scout Camp</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
-</div>
 
-<!-- Millbrook — single card in masonry -->
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('millbrook')">
-    <!-- 🔍 ZOOM: Millbrook -->
-    <img src="Images/MillbrookStuffCombined.png" alt="Millbrook"
-         style="transform: scale(1.0); object-position: 50% 50%;">
+  <!-- Millbrook: 2x1 preview → spans 2 of 6 cols -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('millbrook')">
+    <img class="preview-img" src="Images/Preview_millbrook_2x1.jpg" alt="Millbrook Marsh">
     <div class="card-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
       <div class="card-title">Millbrook Marsh LEGO Maps</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
-</div>
 
-<!-- Mukuru — grouped 2-wide row -->
-<div class="group-row" onclick="openModal('mukuru')">
-  <div class="group-row-inner cols-2">
-    <!-- 🔍 ZOOM: Mukuru -->
-    <img src="Images/OverviewFINAL6_29.png" alt="Mukuru Overview"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <img src="Images/IndividualVillages6_29_2.png" alt="Mukuru Villages"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <div class="group-overlay">
+  <!-- Mukuru: 3x1 preview → spans 3 of 6 cols -->
+  <div class="card ratio-3x1 span-3" onclick="openModal('mukuru')">
+    <img class="preview-img" src="Images/Preview_Mukuru_3x1.jpg" alt="Mukuru Nairobi">
+    <div class="card-overlay">
       <div class="card-section-tag">GeoGraphics Lab</div>
       <div class="card-title">Mukuru, Nairobi — Village Research</div>
       <div class="card-cta">click to explore</div>
@@ -648,80 +505,63 @@
   </div>
 </div>
 
-<!-- ── NACIS + CAGIS ── -->
+
+<!-- ══════════════════════════════════════════
+     02 — NACIS + CAGIS
+     ══════════════════════════════════════════ -->
 <div class="section-divider" id="nacis">
   <span class="section-num">02</span>
   <span class="section-label">NACIS + CaGIS</span>
   <div class="section-line"></div>
 </div>
 
-<!-- =====================================================================
-     🔍 ZOOM & POSITION CONTROLS — NACIS + CAGIS
-     ===================================================================== -->
-
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('isleroyale')">
-    <!-- 🔍 ZOOM: Isle Royale -->
-    <img src="Images/IsleRoyale.png" alt="Isle Royale"
-         style="transform: scale(1.0); object-position: 50% 50%;">
+<div class="portfolio-grid">
+  <!-- Isle Royale: 1x1 preview → spans 1 of 6 cols -->
+  <div class="card ratio-1x1 span-1" onclick="openModal('isleroyale')">
+    <img class="preview-img" src="Images/Preview_IsleRoyale_1x1.jpg" alt="Isle Royale">
     <div class="card-overlay">
       <div class="card-section-tag">NACIS</div>
       <div class="card-title">Isle Royale National Park</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
-</div>
 
-<!-- Two scrabble maps — grouped row -->
-<div class="group-row scrabble-row" id="scrabbleGroup">
-  <div class="group-row-inner cols-2">
-    <!-- 🔍 ZOOM: Scrabble maps -->
-    <img src="Images/RevisedMapQuilt.png" alt="Map Quilt"
-         onclick="openModal('quilt')" style="cursor:pointer; transform: scale(1.0); object-position: 50% 50%;">
-    <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble"
-         onclick="openModal('cagis')" style="cursor:pointer; transform: scale(1.0); object-position: 50% 50%;">
-    <div class="group-overlay" style="pointer-events:none">
+  <!-- Scrabble Maps: 2x1 preview → spans 2 of 6 cols -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('scrabble')">
+    <img class="preview-img" src="Images/Preview_scrabble_2x1.jpg" alt="Scrabble Maps">
+    <div class="card-overlay">
       <div class="card-section-tag">NACIS + CaGIS</div>
       <div class="card-title">Scrabble Maps</div>
-      <div class="card-cta">hover · click to explore</div>
+      <div class="card-cta">click to explore</div>
     </div>
   </div>
 </div>
 
-<!-- ── CLASSWORK ── -->
+
+<!-- ══════════════════════════════════════════
+     03 — CLASSWORK
+     ══════════════════════════════════════════ -->
 <div class="section-divider" id="classwork">
   <span class="section-num">03</span>
   <span class="section-label">Classwork</span>
   <div class="section-line"></div>
 </div>
 
-<!-- =====================================================================
-     🔍 ZOOM & POSITION CONTROLS — CLASSWORK
-     ===================================================================== -->
-
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('yellowstone')">
-    <!-- 🔍 ZOOM: Yellowstone -->
-    <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk"
-         style="transform: scale(1.0); object-position: 50% 50%;">
+<div class="portfolio-grid">
+  <!-- Yellowstone LEGO: 1x1 preview → spans 1 of 6 cols -->
+  <div class="card ratio-1x1 span-1" onclick="openModal('yellowstone')">
+    <img class="preview-img" src="Images/Preview_lego_1x1.jpg" alt="Yellowstone LEGO">
     <div class="card-overlay">
       <div class="card-section-tag">Classwork</div>
       <div class="card-title">Yellowstone Wildfire Risk</div>
       <div class="card-cta">click to explore</div>
     </div>
   </div>
-</div>
 
-<!-- Michigan — grouped row: stacked vertically -->
-<div class="group-row" onclick="openModal('michigan')">
-  <div class="group-row-inner cols-1-stack">
-    <!-- 🔍 ZOOM: Michigan — WorkSample3 (contain, so scale/position have less effect) -->
-    <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" class="contain"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <!-- 🔍 ZOOM: Michigan — WorkSample4 -->
-    <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <div class="group-overlay">
+  <!-- Michigan: 2x1 preview → spans 2 of 6 cols -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('michigan')">
+    <img class="preview-img" src="Images/Preview_michigan_2x1.jpg" alt="Michigan Internet Access">
+    <div class="card-overlay">
       <div class="card-section-tag">Classwork</div>
       <div class="card-title">Michigan Internet Access</div>
       <div class="card-cta">click to explore</div>
@@ -729,26 +569,21 @@
   </div>
 </div>
 
-<!-- ── RESEARCH ── -->
+
+<!-- ══════════════════════════════════════════
+     04 — RESEARCH
+     ══════════════════════════════════════════ -->
 <div class="section-divider" id="research">
   <span class="section-num">04</span>
   <span class="section-label">Research</span>
   <div class="section-line"></div>
 </div>
 
-<!-- =====================================================================
-     🔍 ZOOM & POSITION CONTROLS — RESEARCH
-     ===================================================================== -->
-
-<!-- PFAS — grouped 2-wide row -->
-<div class="group-row" onclick="openModal('pfas')">
-  <div class="group-row-inner cols-2">
-    <!-- 🔍 ZOOM: PFAS -->
-    <img src="Images/DualMap4.2.png" alt="PFAS Research"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <img src="Images/WebMap.png" alt="PFAS Web Map"
-         style="transform: scale(1.0); object-position: 50% 50%;">
-    <div class="group-overlay">
+<div class="portfolio-grid">
+  <!-- PFAS: 2x1 preview → spans 2 of 6 cols -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('pfas')">
+    <img class="preview-img" src="Images/Preview_PFAS_2x1.jpg" alt="PFAS Research">
+    <div class="card-overlay">
       <div class="card-section-tag">Research</div>
       <div class="card-title">PFAS &amp; Roadside Springs Research</div>
       <div class="card-cta">click to explore</div>
@@ -756,22 +591,20 @@
   </div>
 </div>
 
-<!-- ── PERSONAL ── -->
+
+<!-- ══════════════════════════════════════════
+     05 — PERSONAL
+     ══════════════════════════════════════════ -->
 <div class="section-divider" id="personal">
   <span class="section-num">05</span>
   <span class="section-label">Personal Projects</span>
   <div class="section-line"></div>
 </div>
 
-<!-- =====================================================================
-     🔍 ZOOM & POSITION CONTROLS — PERSONAL
-     ===================================================================== -->
-
-<div class="masonry">
-  <div class="card card-single" onclick="openModal('bear')">
-    <!-- 🔍 ZOOM: Black Bear -->
-    <img src="Images/BBHarvest6_29.png" alt="Black Bear"
-         style="transform: scale(1.0); object-position: 50% 50%;">
+<div class="portfolio-grid">
+  <!-- Black Bear: 1x1 preview → spans 1 of 6 cols -->
+  <div class="card ratio-1x1 span-1" onclick="openModal('bear')">
+    <img class="preview-img" src="Images/Preview_blackbear_1x1.jpg" alt="Black Bear Hunting Map">
     <div class="card-overlay">
       <div class="card-section-tag">Personal</div>
       <div class="card-title">Black Bear Hunting Map</div>
@@ -780,12 +613,60 @@
   </div>
 </div>
 
+
+<!-- ══════════════════════════════════════════
+     06 — MISC
+     ══════════════════════════════════════════ -->
+<div class="section-divider" id="misc">
+  <span class="section-num">06</span>
+  <span class="section-label">Misc</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="portfolio-grid">
+  <!-- Misc 1: 2x1 → spans 2 cols, on its own row -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('misc1')">
+    <img class="preview-img" src="Images/Preview_Misc_2x1.jpg" alt="Misc 1">
+    <div class="card-overlay">
+      <div class="card-section-tag">Misc</div>
+      <div class="card-title">Coming Soon</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
+<div class="portfolio-grid">
+  <!-- Misc 2: 2x1 → spans 2 cols -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('misc2')">
+    <img class="preview-img" src="Images/Preview_Misc_2x1(2).jpg" alt="Misc 2">
+    <div class="card-overlay">
+      <div class="card-section-tag">Misc</div>
+      <div class="card-title">Coming Soon</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
+<div class="portfolio-grid">
+  <!-- Misc 3: 2x1 → spans 2 cols -->
+  <div class="card ratio-2x1 span-2" onclick="openModal('misc3')">
+    <img class="preview-img" src="Images/Preview_Misc_2x1(3).jpg" alt="Misc 3">
+    <div class="card-overlay">
+      <div class="card-section-tag">Misc</div>
+      <div class="card-title">Coming Soon</div>
+      <div class="card-cta">click to explore</div>
+    </div>
+  </div>
+</div>
+
+
 <footer>
   <img src="Images/Logo_noBackground.png" alt="Logo">
   <span>Cooper Price — Cartography Portfolio &nbsp;·&nbsp; Penn State University</span>
 </footer>
 
-<!-- MODAL -->
+
+<!-- ── MODAL ── -->
 <div class="modal-bg" id="modalBg" onclick="closeIfBg(event)">
   <button class="modal-close" onclick="closeModal()">Close ✕</button>
   <div class="modal">
@@ -795,31 +676,14 @@
 </div>
 
 <script>
+// ─────────────────────────────────────────────────────────
+// MODAL DATA
+// Preview images are thumbnails only — modal shows the real
+// full-resolution map images listed in each entry's `images`
+// ─────────────────────────────────────────────────────────
 const data = {
-  yellowstone: {
-    section: 'Classwork',
-    title: 'Yellowstone Wildfire Risk — LEGO Style',
-    images: ['Images/CooperPriceWorkSample2.png'],
-    desc: 'Created for a final project in a cartography class, this map uses LANDFIRE data to produce a wildfire risk raster for the Yellowstone region. The visual style applies a LEGO brick aesthetic, blending serious spatial analysis with a playful, tactile presentation.',
-    tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
-    link: null
-  },
-  michigan: {
-    section: 'Classwork',
-    title: 'Michigan Internet Access',
-    images: ['Images/CooperPriceWorkSample3.png', 'Images/CooperPriceWorkSample4.png'],
-    desc: 'These maps were created for a class project using Census ACS data to examine internet access across Michigan, with a focus on percent change over time. The paired format allows direct comparison across different temporal snapshots.',
-    tools: ['ArcGIS', 'Adobe Illustrator'],
-    link: null
-  },
-  pfas: {
-    section: 'Research',
-    title: 'PFAS & Roadside Springs Research',
-    images: ['Images/DualMap4.2.png', 'Images/WebMap.png'],
-    desc: 'Through research with Penn State Extension, this project examines water quality in roadside springs and its relationship to surrounding land use — visualized through a bivariate map. Research has been presented at the Penn State Water Conference, PIERS Conference, Penn State Undergraduate Research Exhibit, and UCOWR Conference. Findings were also published in an interactive web map through Penn State Extension.',
-    tools: ['ArcGIS', 'ArcGIS Online', 'Arcade', 'Python', 'Adobe Illustrator'],
-    link: { url: 'https://extension.psu.edu/roadside-springs-map', label: 'View Interactive Web Map →' }
-  },
+
+  // ── GeoGraphics Lab ──────────────────────────────────
   bsa: {
     section: 'GeoGraphics Lab',
     title: 'BSA — 7 Mountains Scout Camp',
@@ -844,22 +708,8 @@ const data = {
     tools: ['ArcGIS', 'Adobe Illustrator'],
     link: null
   },
-  bear: {
-    section: 'Personal Projects',
-    title: 'Black Bear Hunting Map',
-    images: ['Images/BBHarvest6_29.png'],
-    desc: 'A passion project built to gain experience with Blender as a cartographic tool. Using a QGIS-to-Blender workflow with the GIS plugin, elevation data was extruded into a 3D surface, giving the distribution data physical dimension and depth.',
-    tools: ['QGIS', 'Blender'],
-    link: null
-  },
-  quilt: {
-    section: 'NACIS',
-    title: 'NACIS Map Quilt — Louisville',
-    images: ['Images/RevisedMapQuilt.png', 'Images/FullMapQuilt.jpg'],
-    desc: 'Created as part of the NACIS conference map quilt tradition, where the host city is divided into a grid and each tile is designed independently. All tiles are displayed together at the conference. This tile covers a section of Louisville and uses a Scrabble-board style to label the city\'s neighborhoods.',
-    tools: ['QGIS', 'Adobe Illustrator'],
-    link: null
-  },
+
+  // ── NACIS + CaGIS ────────────────────────────────────
   isleroyale: {
     section: 'NACIS',
     title: 'Isle Royale National Park',
@@ -868,14 +718,79 @@ const data = {
     tools: ['QGIS', 'Blender', 'Adobe Illustrator', 'Adobe Photoshop'],
     link: null
   },
-  cagis: {
-    section: 'CaGIS',
-    title: 'NYC Scrabble Map — CaGIS Competition',
-    images: ['Images/NYCScrabble_Final.png'],
-    desc: 'Submitted to the Cartography and Geographic Information Society (CaGIS) student map competition. Building on the Louisville Scrabble tile made for NACIS, this map expands the concept to a section of New York City — labeling neighborhoods and streets through the lens of a Scrabble board.',
+  scrabble: {
+    section: 'NACIS + CaGIS',
+    title: 'Scrabble Maps',
+    images: ['Images/RevisedMapQuilt.png', 'Images/NYCScrabble_Final.png'],
+    desc: 'Two maps using a Scrabble-board aesthetic to label city neighborhoods and streets. The Louisville tile was created for the NACIS conference map quilt tradition. The NYC map expands the concept to a section of New York City and was submitted to the CaGIS student map competition.',
     tools: ['QGIS', 'Adobe Illustrator'],
     link: null
+  },
+
+  // ── Classwork ────────────────────────────────────────
+  yellowstone: {
+    section: 'Classwork',
+    title: 'Yellowstone Wildfire Risk — LEGO Style',
+    images: ['Images/CooperPriceWorkSample2.png'],
+    desc: 'Created for a final project in a cartography class, this map uses LANDFIRE data to produce a wildfire risk raster for the Yellowstone region. The visual style applies a LEGO brick aesthetic, blending serious spatial analysis with a playful, tactile presentation.',
+    tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
+    link: null
+  },
+  michigan: {
+    section: 'Classwork',
+    title: 'Michigan Internet Access',
+    images: ['Images/CooperPriceWorkSample3.png', 'Images/CooperPriceWorkSample4.png'],
+    desc: 'These maps were created for a class project using Census ACS data to examine internet access across Michigan, with a focus on percent change over time. The paired format allows direct comparison across different temporal snapshots.',
+    tools: ['ArcGIS', 'Adobe Illustrator'],
+    link: null
+  },
+
+  // ── Research ─────────────────────────────────────────
+  pfas: {
+    section: 'Research',
+    title: 'PFAS & Roadside Springs Research',
+    images: ['Images/DualMap4.2.png', 'Images/WebMap.png'],
+    desc: 'Through research with Penn State Extension, this project examines water quality in roadside springs and its relationship to surrounding land use — visualized through a bivariate map. Research has been presented at the Penn State Water Conference, PIERS Conference, Penn State Undergraduate Research Exhibit, and UCOWR Conference. Findings were also published in an interactive web map through Penn State Extension.',
+    tools: ['ArcGIS', 'ArcGIS Online', 'Arcade', 'Python', 'Adobe Illustrator'],
+    link: { url: 'https://extension.psu.edu/roadside-springs-map', label: 'View Interactive Web Map →' }
+  },
+
+  // ── Personal ─────────────────────────────────────────
+  bear: {
+    section: 'Personal Projects',
+    title: 'Black Bear Hunting Map',
+    images: ['Images/BBHarvest6_29.png'],
+    desc: 'A passion project built to gain experience with Blender as a cartographic tool. Using a QGIS-to-Blender workflow with the GIS plugin, elevation data was extruded into a 3D surface, giving the distribution data physical dimension and depth.',
+    tools: ['QGIS', 'Blender'],
+    link: null
+  },
+
+  // ── Misc — fill in title, desc, images, tools when ready ──
+  misc1: {
+    section: 'Misc',
+    title: 'Coming Soon',
+    images: ['Images/Preview_Misc_2x1.jpg'],
+    desc: 'Details coming soon.',
+    tools: [],
+    link: null
+  },
+  misc2: {
+    section: 'Misc',
+    title: 'Coming Soon',
+    images: ['Images/Preview_Misc_2x1(2).jpg'],
+    desc: 'Details coming soon.',
+    tools: [],
+    link: null
+  },
+  misc3: {
+    section: 'Misc',
+    title: 'Coming Soon',
+    images: ['Images/Preview_Misc_2x1(3).jpg'],
+    desc: 'Details coming soon.',
+    tools: [],
+    link: null
   }
+
 };
 
 function openModal(key) {
@@ -887,10 +802,11 @@ function openModal(key) {
     <div class="modal-section-tag">${d.section}</div>
     <h2 class="modal-title">${d.title}</h2>
     <p class="modal-desc">${d.desc}</p>
+    ${d.tools.length ? `
     <div>
       <div class="modal-tools-label">Tools Used</div>
       <div class="tools-list">${d.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}</div>
-    </div>
+    </div>` : ''}
     ${d.link ? `<a href="${d.link.url}" target="_blank" class="modal-link">${d.link.label}</a>` : ''}
   `;
   document.getElementById('modalBg').classList.add('open');
