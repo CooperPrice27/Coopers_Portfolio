@@ -170,11 +170,12 @@
        3x1 preview → .span-3  (aspect-ratio: 3/1)
   ─────────────────────────────────────────────────────── */
   .portfolio-grid {
-    padding: 0 40px;
+    padding: 0 180px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 6px;
     margin-bottom: 6px;
+    justify-items: center;
   }
 
   .span-1 { grid-column: span 1; }
@@ -261,7 +262,7 @@
   }
   .card:hover .card-cta { transform: translateY(0); }
 
-
+  /* no grid overlay */
 
   /* ── MODAL ── */
   .modal-bg {
@@ -413,7 +414,7 @@
     .hero-logo-panel { padding: 40px 24px; }
     .hero-logo-panel img { width: 50%; }
     .section-divider { padding: 40px 20px 12px; }
-    .portfolio-grid { padding: 0 12px; grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { padding: 0 20px; grid-template-columns: repeat(2, 1fr); }
     .span-1, .span-2, .span-3 { grid-column: span 2; }
     .card.ratio-1x1, .card.ratio-2x1, .card.ratio-3x1 { aspect-ratio: 2 / 1; }
     .modal { grid-template-columns: 1fr; }
