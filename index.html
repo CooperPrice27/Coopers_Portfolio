@@ -369,26 +369,6 @@
   .group-row:hover .group-overlay .card-cta { transform: translateY(0); }
 
 
-  /* subtle dark purple grid overlay on all images */
-  .card::after,
-  .group-row-inner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(94,22,78,0.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(94,22,78,0.12) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* keep overlay text above the grid */
-  .card-overlay,
-  .group-overlay {
-    z-index: 2;
-  }
-
   /* ── MODAL ── */
   .modal-bg {
     position: fixed;
@@ -636,7 +616,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-left">
-    <img src="images_2/NoRWB.png" alt="Logo" class="nav-logo">
+    <img src="images_2/Logo_noBackground.png" alt="Logo" class="nav-logo">
     <div class="nav-name">Cooper Price</div>
   </div>
   <div class="nav-links">
@@ -653,7 +633,7 @@
     <div class="hero-meta">Penn State University &nbsp;·&nbsp; GeoGraphics Lab</div>
   </div>
   <div class="hero-logo-panel">
-    <img src="images_2/NoRWB.png" alt="Cooper Price Logo">
+    <img src="images_2/Logo_noBackground.png" alt="Cooper Price Logo">
   </div>
 </section>
 
@@ -795,8 +775,8 @@
     </div>
   </div>
 
-  <!-- ROW 7: Tigers Graphic (left) — full bleed -->
-  <div class="p-row" style="grid-template-columns: 1fr;">
+  <!-- ROW 7: Tigers Graphic - half width, left aligned -->
+  <div class="p-row" style="grid-template-columns: 1fr 1fr;">
     <div class="card card-single" onclick="openModal('tigers')">
       <img src="images_2/Tigers_graphic.png" alt="Tigers Graphic">
       <div class="card-overlay">
@@ -805,12 +785,13 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
+    <div style="background: var(--bg);"></div>
   </div>
 
 </div>
 
 <footer>
-  <img src="images_2/NoRWB.png" alt="Logo">
+  <img src="images_2/Logo_noBackground.png" alt="Logo">
   <span>Cooper Price — Cartography Portfolio &nbsp;·&nbsp; Penn State University</span>
 </footer>
 
