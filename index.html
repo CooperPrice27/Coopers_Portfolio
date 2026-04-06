@@ -560,6 +560,75 @@
     .modal { grid-template-columns: 1fr; }
     .modal-info { padding: 24px 20px; }
   }
+
+  /* ── PORTFOLIO GRID ── */
+  .portfolio {
+    padding: 0 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  /* each row is a horizontal grid */
+  .p-row {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+  }
+
+  /* stacked column within a row */
+  .p-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* BSA vertical group — shared hover */
+  .group-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .group-col img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.4s ease;
+    filter: brightness(0.85) saturate(0.95);
+  }
+
+  .group-col:hover img {
+    filter: brightness(0.28) saturate(0.6);
+  }
+
+  .group-col .group-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+  }
+
+  .group-col:hover .group-overlay { opacity: 1; }
+  .group-col:hover .group-overlay .card-section-tag { transform: translateY(0); }
+  .group-col:hover .group-overlay .card-title { transform: translateY(0); }
+  .group-col:hover .group-overlay .card-cta { transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .portfolio { padding: 0 20px; }
+    .p-row { grid-template-columns: 1fr !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -567,15 +636,11 @@
 <!-- NAV -->
 <nav>
   <div class="nav-left">
-    <img src="Images/Logo_noBackground.png" alt="Logo" class="nav-logo">
+    <img src="images_2/NoRWB.png" alt="Logo" class="nav-logo">
     <div class="nav-name">Cooper Price</div>
   </div>
   <div class="nav-links">
-    <a href="#lab">Lab</a>
-    <a href="#nacis">NACIS</a>
-    <a href="#classwork">Classwork</a>
-    <a href="#research">Research</a>
-    <a href="#personal">Personal</a>
+    <a href="#portfolio">Portfolio</a>
   </div>
 </nav>
 
@@ -588,104 +653,80 @@
     <div class="hero-meta">Penn State University &nbsp;·&nbsp; GeoGraphics Lab</div>
   </div>
   <div class="hero-logo-panel">
-    <img src="Images/Logo_noBackground.png" alt="Cooper Price Logo">
+    <img src="images_2/NoRWB.png" alt="Cooper Price Logo">
   </div>
 </section>
 
-<!-- ── UNIFIED GRID ── -->
-<div class="grid-wrap">
+<!-- ── PORTFOLIO GRID ── -->
+<div class="portfolio" id="portfolio">
 
-  <!-- BSA — grouped 3-wide -->
-  <div class="group-row" onclick="openModal('bsa')">
-    <div class="group-row-inner cols-3">
-      <img src="Images/BSAMap1.png" alt="BSA Map 1">
-      <img src="Images/BSAMap2.png" alt="BSA Map 2">
-      <img src="Images/BSAMap3.png" alt="BSA Map 3">
-      <div class="group-overlay">
-        <div class="card-section-tag">GeoGraphics Lab</div>
-        <div class="card-title">BSA — 7 Mountains Scout Camp</div>
-        <div class="card-cta">click to explore</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main masonry grid -->
-  <div class="masonry">
-
-    <!-- Millbrook -->
-    <div class="card card-single" onclick="openModal('millbrook')">
-      <img src="Images/MillbrookStuffCombined.png" alt="Millbrook">
+  <!-- ROW 1: LEGO wildfire (left) | Isle Royale (right) -->
+  <div class="p-row" style="grid-template-columns: 493fr 726fr;">
+    <div class="card card-single" onclick="openModal('yellowstone')">
+      <img src="images_2/lego_wildfire_map.png" alt="LEGO Wildfire Map">
       <div class="card-overlay">
-        <div class="card-section-tag">GeoGraphics Lab</div>
-        <div class="card-title">Millbrook Marsh LEGO Maps</div>
+        <div class="card-section-tag">Classwork</div>
+        <div class="card-title">Yellowstone Wildfire Risk — LEGO</div>
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-
-    <!-- Isle Royale -->
     <div class="card card-single" onclick="openModal('isleroyale')">
-      <img src="Images/IsleRoyale.png" alt="Isle Royale">
+      <img src="images_2/IsleRoyale.png" alt="Isle Royale">
       <div class="card-overlay">
         <div class="card-section-tag">NACIS</div>
         <div class="card-title">Isle Royale National Park</div>
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-
-    <!-- Yellowstone -->
-    <div class="card card-single" onclick="openModal('yellowstone')">
-      <img src="Images/CooperPriceWorkSample2.png" alt="Yellowstone Wildfire Risk">
-      <div class="card-overlay">
-        <div class="card-section-tag">Classwork</div>
-        <div class="card-title">Yellowstone Wildfire Risk</div>
-        <div class="card-cta">click to explore</div>
-      </div>
-    </div>
-
-    <!-- Black Bear -->
-    <div class="card card-single" onclick="openModal('bear')">
-      <img src="Images/BBHarvest6_29.png" alt="Black Bear">
-      <div class="card-overlay">
-        <div class="card-section-tag">Personal</div>
-        <div class="card-title">Black Bear Hunting Map</div>
-        <div class="card-cta">click to explore</div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Mukuru — grouped 2-wide -->
-  <div class="group-row" onclick="openModal('mukuru')">
-    <div class="group-row-inner cols-2">
-      <img src="Images/OverviewFINAL6_29.png" alt="Mukuru Overview">
-      <img src="Images/IndividualVillages6_29_2.png" alt="Mukuru Villages">
+  <!-- ROW 2: BSA Map 1 (left) | Map Quilt Scrabble (right-top) + Michigan Choropleth (right-mid) -->
+  <div class="p-row" style="grid-template-columns: 488fr 715fr;">
+    <!-- BSA group: 3 stacked vertically, shared hover -->
+    <div class="group-col" onclick="openModal('bsa')">
+      <img src="images_2/BSAMap1.png" alt="BSA Map 1">
+      <img src="images_2/BSAMap2.png" alt="BSA Map 2">
+      <img src="images_2/BSAMap3.png" alt="BSA Map 3">
       <div class="group-overlay">
         <div class="card-section-tag">GeoGraphics Lab</div>
-        <div class="card-title">Mukuru, Nairobi — Village Research</div>
+        <div class="card-title">BSA — 7 Mountains Scout Camp</div>
         <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+    <!-- Right column: Map Quilt + Michigan Choropleth stacked -->
+    <div class="p-col">
+      <div class="card card-single" onclick="openModal('quilt')">
+        <img src="images_2/Map_Quilt_Scrabble.png" alt="Map Quilt Scrabble">
+        <div class="card-overlay">
+          <div class="card-section-tag">NACIS</div>
+          <div class="card-title">Map Quilt — Louisville</div>
+          <div class="card-cta">click to explore</div>
+        </div>
+      </div>
+      <div class="card card-single" onclick="openModal('michigan')">
+        <img src="images_2/Michigan_choropleth.png" alt="Michigan Choropleth">
+        <div class="card-overlay">
+          <div class="card-section-tag">Classwork</div>
+          <div class="card-title">Michigan Internet Access</div>
+          <div class="card-cta">click to explore</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- PFAS — grouped 2-wide -->
-  <div class="group-row" onclick="openModal('pfas')">
-    <div class="group-row-inner cols-2">
-      <img src="Images/DualMap4.2.png" alt="PFAS Research">
-      <img src="Images/WebMap.png" alt="PFAS Web Map">
-      <div class="group-overlay">
-        <div class="card-section-tag">Research</div>
-        <div class="card-title">PFAS &amp; Roadside Springs Research</div>
+  <!-- ROW 3: NYC Scrabble (right-large) | Michigan Bivariate (right-small) -->
+  <div class="p-row" style="grid-template-columns: 420fr 332fr;">
+    <div class="card card-single" onclick="openModal('cagis')">
+      <img src="images_2/NYC_scrabble.png" alt="NYC Scrabble">
+      <div class="card-overlay">
+        <div class="card-section-tag">CaGIS</div>
+        <div class="card-title">NYC Scrabble Map</div>
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-  </div>
-
-  <!-- Michigan — stacked vertical grouped -->
-  <div class="group-row" onclick="openModal('michigan')">
-    <div class="group-row-inner cols-1-stack">
-      <img src="Images/CooperPriceWorkSample3.png" alt="Michigan Internet" class="contain">
-      <img src="Images/CooperPriceWorkSample4.png" alt="Michigan Internet 2">
-      <div class="group-overlay">
+    <div class="card card-single" onclick="openModal('michigan')">
+      <img src="images_2/Michigan_bivaret.png" alt="Michigan Bivariate">
+      <div class="card-overlay">
         <div class="card-section-tag">Classwork</div>
         <div class="card-title">Michigan Internet Access</div>
         <div class="card-cta">click to explore</div>
@@ -693,15 +734,75 @@
     </div>
   </div>
 
-  <!-- Scrabble maps — grouped 2-wide, individual clicks -->
-  <div class="group-row scrabble-row">
-    <div class="group-row-inner cols-2">
-      <img src="Images/RevisedMapQuilt.png" alt="Map Quilt" onclick="openModal('quilt')" style="cursor:pointer">
-      <img src="Images/NYCScrabble_Final.png" alt="NYC Scrabble" onclick="openModal('cagis')" style="cursor:pointer">
-      <div class="group-overlay" style="pointer-events:none">
-        <div class="card-section-tag">NACIS + CaGIS</div>
-        <div class="card-title">Scrabble Maps</div>
-        <div class="card-cta">hover · click to explore</div>
+  <!-- ROW 4: BSA Map 3 area — Black Bear (right) -->
+  <div class="p-row" style="grid-template-columns: 497fr 766fr;">
+    <!-- placeholder left col spacer — put PFAS here -->
+    <div class="card card-single" onclick="openModal('pfas')">
+      <img src="images_2/PFAS_bivaret_map.png" alt="PFAS Research">
+      <div class="card-overlay">
+        <div class="card-section-tag">Research</div>
+        <div class="card-title">PFAS &amp; Roadside Springs</div>
+        <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+    <div class="card card-single" onclick="openModal('bear')">
+      <img src="images_2/Black_bear_map.png" alt="Black Bear">
+      <div class="card-overlay">
+        <div class="card-section-tag">Personal</div>
+        <div class="card-title">Black Bear Hunting Map</div>
+        <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 5: WebMap (left) | Millbrook Combined (right) -->
+  <div class="p-row" style="grid-template-columns: 505fr 772fr;">
+    <div class="card card-single" onclick="openModal('pfas')">
+      <img src="images_2/WebMap.png" alt="PFAS Web Map">
+      <div class="card-overlay">
+        <div class="card-section-tag">Research</div>
+        <div class="card-title">PFAS Web Map</div>
+        <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+    <div class="card card-single" onclick="openModal('millbrook')">
+      <img src="images_2/Millbrook_Combined.png" alt="Millbrook">
+      <div class="card-overlay">
+        <div class="card-section-tag">GeoGraphics Lab</div>
+        <div class="card-title">Millbrook Marsh LEGO Maps</div>
+        <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 6: NoRWB (left) | CFB Map (right) -->
+  <div class="p-row" style="grid-template-columns: 503fr 774fr;">
+    <div class="card card-single" onclick="openModal('norwb')">
+      <img src="images_2/NoRWB.png" alt="NoRWB">
+      <div class="card-overlay">
+        <div class="card-section-tag">Personal</div>
+        <div class="card-title">NoRWB</div>
+        <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+    <div class="card card-single" onclick="openModal('cfb')">
+      <img src="images_2/CFB_map.png" alt="CFB Map">
+      <div class="card-overlay">
+        <div class="card-section-tag">Personal</div>
+        <div class="card-title">CFB Map</div>
+        <div class="card-cta">click to explore</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 7: Tigers Graphic (left) — full bleed -->
+  <div class="p-row" style="grid-template-columns: 1fr;">
+    <div class="card card-single" onclick="openModal('tigers')">
+      <img src="images_2/Tigers_graphic.png" alt="Tigers Graphic">
+      <div class="card-overlay">
+        <div class="card-section-tag">Personal</div>
+        <div class="card-title">Tigers Graphic</div>
+        <div class="card-cta">click to explore</div>
       </div>
     </div>
   </div>
@@ -709,7 +810,7 @@
 </div>
 
 <footer>
-  <img src="Images/Logo_noBackground.png" alt="Logo">
+  <img src="images_2/NoRWB.png" alt="Logo">
   <span>Cooper Price — Cartography Portfolio &nbsp;·&nbsp; Penn State University</span>
 </footer>
 
@@ -727,7 +828,7 @@ const data = {
   yellowstone: {
     section: 'Classwork',
     title: 'Yellowstone Wildfire Risk — LEGO Style',
-    images: ['Images/CooperPriceWorkSample2.png'],
+    images: ['images_2/lego_wildfire_map.png'],
     desc: 'Created for a final project in a cartography class, this map uses LANDFIRE data to produce a wildfire risk raster for the Yellowstone region. The visual style applies a LEGO brick aesthetic, blending serious spatial analysis with a playful, tactile presentation.',
     tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
     link: null
@@ -735,7 +836,7 @@ const data = {
   michigan: {
     section: 'Classwork',
     title: 'Michigan Internet Access',
-    images: ['Images/CooperPriceWorkSample3.png', 'Images/CooperPriceWorkSample4.png'],
+    images: ['images_2/Michigan_bivaret.png', 'images_2/Michigan_choropleth.png'],
     desc: 'These maps were created for a class project using Census ACS data to examine internet access across Michigan, with a focus on percent change over time. The paired format allows direct comparison across different temporal snapshots.',
     tools: ['ArcGIS', 'Adobe Illustrator'],
     link: null
@@ -743,7 +844,7 @@ const data = {
   pfas: {
     section: 'Research',
     title: 'PFAS & Roadside Springs Research',
-    images: ['Images/DualMap4.2.png', 'Images/WebMap.png'],
+    images: ['images_2/PFAS_bivaret_map.png', 'images_2/WebMap.png'],
     desc: 'Through research with Penn State Extension, this project examines water quality in roadside springs and its relationship to surrounding land use — visualized through a bivariate map. Research has been presented at the Penn State Water Conference, PIERS Conference, Penn State Undergraduate Research Exhibit, and UCOWR Conference. Findings were also published in an interactive web map through Penn State Extension.',
     tools: ['ArcGIS', 'ArcGIS Online', 'Arcade', 'Python', 'Adobe Illustrator'],
     link: { url: 'https://extension.psu.edu/roadside-springs-map', label: 'View Interactive Web Map →' }
@@ -751,7 +852,7 @@ const data = {
   bsa: {
     section: 'GeoGraphics Lab',
     title: 'BSA — 7 Mountains Scout Camp',
-    images: ['Images/BSAMap1.png', 'Images/BSAMap2.png', 'Images/BSAMap3.png'],
+    images: ['images_2/BSAMap1.png', 'images_2/BSAMap2.png', 'images_2/BSAMap3.png'],
     desc: 'Maps created for a local scout camp whose existing materials were outdated ahead of their season-opening events. Working through the GeoGraphics Lab, three versions were produced: high color without elevation, high color with elevation, and low color with elevation — giving the camp flexibility for different print and display contexts.',
     tools: ['QGIS', 'ArcGIS', 'Eduard', 'Adobe Illustrator', 'Adobe Photoshop'],
     link: null
@@ -759,23 +860,15 @@ const data = {
   millbrook: {
     section: 'GeoGraphics Lab',
     title: 'Millbrook Marsh LEGO Maps',
-    images: ['Images/MillbrookStuffCombined.png'],
+    images: ['images_2/Millbrook_Combined.png'],
     desc: 'Designed for the Millbrook Marsh Visitor Center as a spatial installation for their new building. The LEGO brick aesthetic was chosen to engage a younger audience, making the geographic space approachable and interactive.',
     tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
-    link: null
-  },
-  mukuru: {
-    section: 'GeoGraphics Lab',
-    title: 'Mukuru, Nairobi — Village Research',
-    images: ['Images/OverviewFINAL6_29.png', 'Images/IndividualVillages6_29_2.png'],
-    desc: 'Printed maps created to support field research on flood risk and climate change in the Mukuru informal settlements of Nairobi. The maps were physically taken to the villages and annotated by local residents, capturing on-the-ground knowledge about environmental impacts and flood vulnerabilities.',
-    tools: ['ArcGIS', 'Adobe Illustrator'],
     link: null
   },
   bear: {
     section: 'Personal Projects',
     title: 'Black Bear Hunting Map',
-    images: ['Images/BBHarvest6_29.png'],
+    images: ['images_2/Black_bear_map.png'],
     desc: 'A passion project built to gain experience with Blender as a cartographic tool. Using a QGIS-to-Blender workflow with the GIS plugin, elevation data was extruded into a 3D surface, giving the distribution data physical dimension and depth.',
     tools: ['QGIS', 'Blender'],
     link: null
@@ -783,15 +876,15 @@ const data = {
   quilt: {
     section: 'NACIS',
     title: 'NACIS Map Quilt — Louisville',
-    images: ['Images/RevisedMapQuilt.png', 'Images/FullMapQuilt.jpg'],
-    desc: 'Created as part of the NACIS conference map quilt tradition, where the host city is divided into a grid and each tile is designed independently. All tiles are displayed together at the conference. This tile covers a section of Louisville and uses a Scrabble-board style to label the city\'s neighborhoods.',
+    images: ['images_2/Map_Quilt_Scrabble.png', 'images_2/FullMapQuilt.jpg'],
+    desc: 'Created as part of the NACIS conference map quilt tradition, where the host city is divided into a grid and each tile is designed independently. All tiles are displayed together at the conference. This tile covers a section of Louisville and uses a Scrabble-board style to label the city's neighborhoods.',
     tools: ['QGIS', 'Adobe Illustrator'],
     link: null
   },
   isleroyale: {
     section: 'NACIS',
     title: 'Isle Royale National Park',
-    images: ['Images/IsleRoyale.png'],
+    images: ['images_2/IsleRoyale.png'],
     desc: 'Started as a Christmas gift for a brother who works as a park ranger on Isle Royale, the timeline of this project aligned with the NACIS student map competition — so it was submitted to both. The 3D terrain was rendered in Blender and composited with additional cartographic elements in Illustrator.',
     tools: ['QGIS', 'Blender', 'Adobe Illustrator', 'Adobe Photoshop'],
     link: null
@@ -799,9 +892,33 @@ const data = {
   cagis: {
     section: 'CaGIS',
     title: 'NYC Scrabble Map — CaGIS Competition',
-    images: ['Images/NYCScrabble_Final.png'],
+    images: ['images_2/NYC_scrabble.png'],
     desc: 'Submitted to the Cartography and Geographic Information Society (CaGIS) student map competition. Building on the Louisville Scrabble tile made for NACIS, this map expands the concept to a section of New York City — labeling neighborhoods and streets through the lens of a Scrabble board.',
     tools: ['QGIS', 'Adobe Illustrator'],
+    link: null
+  },
+  norwb: {
+    section: 'Personal',
+    title: 'NoRWB',
+    images: ['images_2/NoRWB.png'],
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    tools: [],
+    link: null
+  },
+  cfb: {
+    section: 'Personal',
+    title: 'CFB Map',
+    images: ['images_2/CFB_map.png'],
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    tools: [],
+    link: null
+  },
+  tigers: {
+    section: 'Personal',
+    title: 'Tigers Graphic',
+    images: ['images_2/Tigers_graphic.png'],
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    tools: [],
     link: null
   }
 };
