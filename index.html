@@ -26,7 +26,6 @@
     min-height: 100vh;
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -40,45 +39,19 @@
     border-bottom: 1px solid rgba(58,31,52,0.5);
   }
 
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
+  .nav-left { display: flex; align-items: center; gap: 14px; }
 
-  .nav-logo {
-    height: 30px;
-    width: auto;
-    opacity: 0.5;
-    transition: opacity 0.2s;
-  }
+  .nav-logo { height: 30px; width: auto; opacity: 0.5; transition: opacity 0.2s; }
   .nav-logo:hover { opacity: 0.8; }
 
-  .nav-name {
-    font-weight: 500;
-    font-size: 16px;
-    letter-spacing: 0.06em;
-    color: var(--text);
-  }
+  .nav-name { font-weight: 500; font-size: 16px; letter-spacing: 0.06em; color: var(--text); }
 
-  .nav-links {
-    display: flex;
-    gap: 28px;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
 
-  /* ── HERO — two column, full height ── */
   .hero {
-    padding-top: 68px; /* nav height */
+    padding-top: 68px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
@@ -92,156 +65,54 @@
     border-right: 1px solid var(--border);
   }
 
-  .hero-label {
-    color: var(--accent2);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    font-weight: 400;
-  }
+  .hero-label { color: var(--accent2); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; font-weight: 400; }
 
-  .hero h1 {
-    font-weight: 300;
-    font-size: clamp(36px, 4vw, 58px);
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 24px;
-  }
+  .hero h1 { font-weight: 300; font-size: clamp(36px, 4vw, 58px); line-height: 1.1; color: var(--text); margin-bottom: 24px; }
+  .hero h1 em { font-style: italic; color: var(--accent2); }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent2);
-  }
+  .hero p { color: rgba(239,185,212,0.45); line-height: 1.85; font-size: 14px; font-weight: 300; max-width: 400px; margin-bottom: 36px; }
 
-  .hero p {
-    color: rgba(239,185,212,0.45);
-    line-height: 1.85;
-    font-size: 14px;
-    font-weight: 300;
-    max-width: 400px;
-    margin-bottom: 36px;
-  }
+  .hero-meta { font-size: 11px; letter-spacing: 0.12em; color: rgba(162,55,126,0.45); text-transform: uppercase; }
 
-  .hero-meta {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: rgba(162,55,126,0.45);
-    text-transform: uppercase;
-  }
-
-  /* right panel — big logo */
-  .hero-logo-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px;
-    background: rgba(94,22,78,0.05);
-  }
-
-  .hero-logo-panel img {
-    width: min(60%, 360px);
-    height: auto;
-    opacity: 0.72;
-    filter: drop-shadow(0 0 80px rgba(162,55,126,0.25));
-    transition: opacity 0.3s;
-  }
+  .hero-logo-panel { display: flex; align-items: center; justify-content: center; padding: 60px; background: rgba(94,22,78,0.05); }
+  .hero-logo-panel img { width: min(60%, 360px); height: auto; opacity: 0.72; filter: drop-shadow(0 0 80px rgba(162,55,126,0.25)); transition: opacity 0.3s; }
   .hero-logo-panel img:hover { opacity: 0.9; }
 
-  /* grid wrapper */
-  .grid-wrap {
-    padding: 0;
-  }
-
-  /* ── SECTION DIVIDER ── */
-  .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 52px 40px 14px;
-  }
-
-  .section-num {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--deep);
-    font-weight: 500;
-  }
-
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 400;
-    white-space: nowrap;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── MASONRY GRID ── */
-  .masonry {
+  /* PORTFOLIO GRID */
+  .portfolio {
     padding: 0 180px;
-    columns: 3;
-    column-gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 80px;
   }
 
-  @media (max-width: 1000px) { .masonry { columns: 2; } }
-  @media (max-width: 600px)  { .masonry { columns: 1; } }
+  .p-row { display: grid; gap: 6px; width: 100%; }
 
-  /* ── STANDARD CARD ── */
+  .p-col { display: flex; flex-direction: column; gap: 6px; }
+
+  /* STANDARD CARD */
   .card {
     position: relative;
     overflow: hidden;
     display: block;
-    margin-bottom: 6px;
     cursor: pointer;
-    break-inside: avoid;
     background: var(--surface);
   }
 
-  .card-single img {
+  .card img {
     width: 100%;
     height: auto;
-    display: block;
-    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
-    filter: brightness(0.85) saturate(0.95);
-  }
-
-  .card-single:hover img {
-    transform: scale(1.03);
-    filter: brightness(0.28) saturate(0.6);
-  }
-
-  /* multi-image card (e.g. Michigan) */
-  .card-multi .card-images {
-    display: flex;
-    width: 100%;
-    height: 300px;
-  }
-
-  .card-multi .card-images img {
-    flex: 1;
-    min-width: 0;
-    object-fit: cover;
     display: block;
     transition: filter 0.4s ease;
     filter: brightness(0.85) saturate(0.95);
   }
 
-  .card-multi .card-images img + img {
-    border-left: 4px solid var(--bg);
-  }
-
-  .card-multi:hover .card-images img {
+  .card:hover img {
     filter: brightness(0.28) saturate(0.6);
   }
 
-  /* hover overlay — centered */
+  /* HOVER OVERLAY */
   .card-overlay {
     position: absolute;
     inset: 0;
@@ -268,7 +139,6 @@
     transition: transform 0.3s;
     font-weight: 400;
   }
-
   .card:hover .card-section-tag { transform: translateY(0); }
 
   .card-title {
@@ -280,7 +150,6 @@
     transition: transform 0.3s 0.03s;
     text-shadow: 0 2px 16px rgba(0,0,0,0.9);
   }
-
   .card:hover .card-title { transform: translateY(0); }
 
   .card-cta {
@@ -294,28 +163,16 @@
   }
   .card:hover .card-cta { transform: translateY(0); }
 
-  /* ── GROUPED ROW — hover affects all images together ── */
-  /* wrapper sits outside masonry, spans full content width */
-  .group-row {
-    padding: 0 180px;
-    margin-bottom: 6px;
+  /* BSA GROUP COL */
+  .group-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     cursor: pointer;
   }
 
-  .group-row-inner {
-    position: relative;
-    display: grid;
-    gap: 6px;
-    overflow: hidden;
-  }
-
-  .group-row-inner.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-  .group-row-inner.cols-2 { grid-template-columns: 1fr 1fr; }
-  .group-row-inner.cols-1-stack { grid-template-columns: 1fr; }
-  .group-row-inner.cols-1-stack img { height: auto; }
-  .group-row-inner.cols-1-stack img.contain { }
-
-  .group-row-inner img {
+  .group-col img {
     width: 100%;
     height: auto;
     display: block;
@@ -323,19 +180,9 @@
     filter: brightness(0.85) saturate(0.95);
   }
 
-  /* preserve full extent of a specific image in a group row */
-  .group-row-inner img.contain {
-    object-fit: contain;
-    background: #0a050a;
-  }
+  .group-col:hover img { filter: brightness(0.28) saturate(0.6); }
 
-  /* dim ALL images on hover of the row */
-  .group-row:hover .group-row-inner img {
-    filter: brightness(0.28) saturate(0.6);
-  }
-
-  /* overlay spans the full row */
-  .group-overlay {
+  .group-col .group-overlay {
     position: absolute;
     inset: 0;
     display: flex;
@@ -347,33 +194,16 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
+  .group-col:hover .group-overlay { opacity: 1; }
+  .group-col:hover .group-overlay .card-section-tag { transform: translateY(0); }
+  .group-col:hover .group-overlay .card-title { transform: translateY(0); }
+  .group-col:hover .group-overlay .card-cta { transform: translateY(0); }
 
-  .group-row:hover .group-overlay { opacity: 1; }
-
-  .group-overlay .card-section-tag {
-    transform: translateY(8px);
-    transition: transform 0.3s;
-  }
-  .group-row:hover .group-overlay .card-section-tag { transform: translateY(0); }
-
-  .group-overlay .card-title {
-    transform: translateY(8px);
-    transition: transform 0.3s 0.03s;
-  }
-  .group-row:hover .group-overlay .card-title { transform: translateY(0); }
-
-  .group-overlay .card-cta {
-    transform: translateY(8px);
-    transition: transform 0.3s 0.06s;
-  }
-  .group-row:hover .group-overlay .card-cta { transform: translateY(0); }
-
-
-  /* ── MODAL ── */
+  /* MODAL */
   .modal-bg {
     position: fixed;
     inset: 0;
-    z-index: 200;
+    z-index: 9999;
     background: rgba(8,4,8,0.96);
     display: flex;
     align-items: center;
@@ -400,6 +230,8 @@
     transform: translateY(12px);
     transition: transform 0.3s;
     border-radius: 4px;
+    position: relative;
+    z-index: 10000;
   }
 
   .modal-bg.open .modal { transform: translateY(0); }
@@ -411,11 +243,7 @@
     gap: 4px;
   }
 
-  .modal-media img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  .modal-media img { width: 100%; height: auto; display: block; }
 
   .modal-info {
     padding: 32px 40px;
@@ -425,71 +253,27 @@
     border-top: 1px solid var(--border);
   }
 
-  .modal-section-tag {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    font-weight: 400;
-  }
+  .modal-section-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); font-weight: 400; }
 
-  .modal-title {
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 1.2;
-    color: var(--text);
-  }
+  .modal-title { font-weight: 500; font-size: 28px; line-height: 1.2; color: var(--text); }
 
-  .modal-desc {
-    color: rgba(239,185,212,0.55);
-    line-height: 1.85;
-    font-size: 13px;
-    font-weight: 300;
-  }
+  .modal-desc { color: rgba(239,185,212,0.55); line-height: 1.85; font-size: 13px; font-weight: 300; }
 
-  .modal-tools-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(162,55,126,0.6);
-    margin-bottom: 8px;
-    font-weight: 400;
-  }
+  .modal-tools-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(162,55,126,0.6); margin-bottom: 8px; font-weight: 400; }
 
-  .tools-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .tools-list { display: flex; flex-wrap: wrap; gap: 6px; }
 
-  .tool-tag {
-    font-size: 11px;
-    padding: 4px 10px;
-    background: rgba(94,22,78,0.18);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    color: var(--text);
-    font-weight: 300;
-  }
+  .tool-tag { font-size: 11px; padding: 4px 10px; background: rgba(94,22,78,0.18); border: 1px solid var(--border); border-radius: 2px; color: var(--text); font-weight: 300; }
 
-  .modal-link {
-    color: var(--accent2);
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    border-bottom: 1px solid rgba(162,55,126,0.35);
-    padding-bottom: 2px;
-    display: inline-block;
-    transition: color 0.2s, border-color 0.2s;
-  }
+  .modal-link { color: var(--accent2); text-decoration: none; font-size: 12px; letter-spacing: 0.06em; border-bottom: 1px solid rgba(162,55,126,0.35); padding-bottom: 2px; display: inline-block; transition: color 0.2s, border-color 0.2s; }
   .modal-link:hover { color: var(--text); border-color: rgba(239,185,212,0.5); }
 
   .modal-close {
     position: fixed;
     top: 20px;
     right: 28px;
-    z-index: 300;
-    background: rgba(14,14,14,0.9);
+    z-index: 10001;
+    background: rgba(14,14,14,0.95);
     border: 1px solid var(--border);
     color: var(--text);
     font-family: 'KoHo', sans-serif;
@@ -497,34 +281,27 @@
     letter-spacing: 0.1em;
     padding: 8px 18px;
     cursor: pointer;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition: background 0.2s, border-color 0.2s;
     border-radius: 3px;
   }
   .modal-close:hover { background: var(--surface); border-color: var(--muted); }
 
-  /* ── FOOTER ── */
   footer {
     padding: 56px 40px 32px;
     color: rgba(162,55,126,0.45);
     font-size: 11px;
     letter-spacing: 0.08em;
     border-top: 1px solid var(--border);
-    margin-top: 80px;
     display: flex;
     align-items: center;
     gap: 14px;
   }
-
-  footer img {
-    height: 22px;
-    opacity: 0.25;
-  }
+  footer img { height: 22px; opacity: 0.25; }
 
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--deep); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
@@ -532,88 +309,15 @@
     .hero-text { border-right: none; border-bottom: 1px solid var(--border); padding: 100px 24px 48px; }
     .hero-logo-panel { padding: 40px 24px; }
     .hero-logo-panel img { width: 50%; }
-    .section-divider { padding: 40px 20px 12px; }
-    .masonry { padding: 0 20px; columns: 1; }
-    .group-row { padding: 0 20px; }
-    .group-row-inner.cols-3 { grid-template-columns: 1fr; }
-    .group-row-inner img { height: 200px; }
+    .portfolio { padding: 0 20px; }
+    .p-row { grid-template-columns: 1fr !important; }
     .modal { width: 98vw; }
     .modal-info { padding: 24px 20px; }
   }
-
-  /* ── PORTFOLIO GRID ── */
-  .portfolio {
-    padding: 0 180px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 6px;
-  }
-
-  /* each row is a horizontal grid */
-  .p-row {
-    display: grid;
-    gap: 6px;
-    width: 100%;
-  }
-
-  /* stacked column within a row */
-  .p-col {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  /* BSA vertical group — shared hover */
-  .group-col {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-  }
-
-  .group-col img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: filter 0.4s ease;
-    filter: brightness(0.85) saturate(0.95);
-  }
-
-  .group-col:hover img {
-    filter: brightness(0.28) saturate(0.6);
-  }
-
-  .group-col .group-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 2;
-  }
-
-  .group-col:hover .group-overlay { opacity: 1; }
-  .group-col:hover .group-overlay .card-section-tag { transform: translateY(0); }
-  .group-col:hover .group-overlay .card-title { transform: translateY(0); }
-  .group-col:hover .group-overlay .card-cta { transform: translateY(0); }
-
-  @media (max-width: 768px) {
-    .portfolio { padding: 0 20px; }
-    .p-row { grid-template-columns: 1fr !important; }
-  }
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-left">
     <img src="images_2/Logo_noBackground.png" alt="Logo" class="nav-logo">
@@ -624,12 +328,11 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
     <div class="hero-label">Cartography &amp; Geographic Design</div>
     <h1>Making places<br><em>legible.</em></h1>
-    <p>Your name, your tagline, your bio goes here. Tell visitors who you are, what you do, and what drives your work. This is placeholder text — update it whenever you're ready.</p>
+    <p>Your name, your tagline, your bio goes here. Tell visitors who you are, what you do, and what drives your work. This is placeholder text — update it whenever you are ready.</p>
     <div class="hero-meta">Penn State University &nbsp;·&nbsp; GeoGraphics Lab</div>
   </div>
   <div class="hero-logo-panel">
@@ -637,12 +340,11 @@
   </div>
 </section>
 
-<!-- ── PORTFOLIO GRID ── -->
 <div class="portfolio" id="portfolio">
 
-  <!-- ROW 1: LEGO wildfire (left) | Isle Royale (right) -->
+  <!-- ROW 1: LEGO wildfire | Isle Royale -->
   <div class="p-row" style="grid-template-columns: 493fr 726fr;">
-    <div class="card card-single" onclick="openModal('yellowstone')">
+    <div class="card" onclick="openModal('yellowstone')">
       <img src="images_2/lego_wildfire_map.png" alt="LEGO Wildfire Map">
       <div class="card-overlay">
         <div class="card-section-tag">Classwork</div>
@@ -650,7 +352,7 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-    <div class="card card-single" onclick="openModal('isleroyale')">
+    <div class="card" onclick="openModal('isleroyale')">
       <img src="images_2/IsleRoyale.png" alt="Isle Royale">
       <div class="card-overlay">
         <div class="card-section-tag">NACIS</div>
@@ -660,9 +362,8 @@
     </div>
   </div>
 
-  <!-- ROW 2: BSA Map 1 (left) | Map Quilt Scrabble (right-top) + Michigan Choropleth (right-mid) -->
+  <!-- ROW 2: BSA stacked (left) | Map Quilt + Michigan Choropleth (right) -->
   <div class="p-row" style="grid-template-columns: 488fr 715fr;">
-    <!-- BSA group: 3 stacked vertically, shared hover -->
     <div class="group-col" onclick="openModal('bsa')">
       <img src="images_2/BSAMap1.png" alt="BSA Map 1">
       <img src="images_2/BSAMap2.png" alt="BSA Map 2">
@@ -673,9 +374,8 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-    <!-- Right column: Map Quilt + Michigan Choropleth stacked -->
     <div class="p-col">
-      <div class="card card-single" onclick="openModal('quilt')">
+      <div class="card" onclick="openModal('quilt')">
         <img src="images_2/Map_Quilt_Scrabble.png" alt="Map Quilt Scrabble">
         <div class="card-overlay">
           <div class="card-section-tag">NACIS</div>
@@ -683,7 +383,7 @@
           <div class="card-cta">click to explore</div>
         </div>
       </div>
-      <div class="card card-single" onclick="openModal('michigan')">
+      <div class="card" onclick="openModal('michigan')">
         <img src="images_2/Michigan_choropleth.png" alt="Michigan Choropleth">
         <div class="card-overlay">
           <div class="card-section-tag">Classwork</div>
@@ -694,9 +394,9 @@
     </div>
   </div>
 
-  <!-- ROW 3: NYC Scrabble (right-large) | Michigan Bivariate (right-small) -->
+  <!-- ROW 3: NYC Scrabble | Michigan Bivariate -->
   <div class="p-row" style="grid-template-columns: 420fr 332fr;">
-    <div class="card card-single" onclick="openModal('cagis')">
+    <div class="card" onclick="openModal('cagis')">
       <img src="images_2/NYC_scrabble.png" alt="NYC Scrabble">
       <div class="card-overlay">
         <div class="card-section-tag">CaGIS</div>
@@ -704,7 +404,7 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-    <div class="card card-single" onclick="openModal('michigan')">
+    <div class="card" onclick="openModal('michigan')">
       <img src="images_2/Michigan_bivaret.png" alt="Michigan Bivariate">
       <div class="card-overlay">
         <div class="card-section-tag">Classwork</div>
@@ -714,10 +414,9 @@
     </div>
   </div>
 
-  <!-- ROW 4: BSA Map 3 area — Black Bear (right) -->
+  <!-- ROW 4: PFAS | Black Bear -->
   <div class="p-row" style="grid-template-columns: 497fr 766fr;">
-    <!-- placeholder left col spacer — put PFAS here -->
-    <div class="card card-single" onclick="openModal('pfas')">
+    <div class="card" onclick="openModal('pfas')">
       <img src="images_2/PFAS_bivaret_map.png" alt="PFAS Research">
       <div class="card-overlay">
         <div class="card-section-tag">Research</div>
@@ -725,7 +424,7 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-    <div class="card card-single" onclick="openModal('bear')">
+    <div class="card" onclick="openModal('bear')">
       <img src="images_2/Black_bear_map.png" alt="Black Bear">
       <div class="card-overlay">
         <div class="card-section-tag">Personal</div>
@@ -735,9 +434,9 @@
     </div>
   </div>
 
-  <!-- ROW 5: WebMap (left) | Millbrook Combined (right) -->
+  <!-- ROW 5: WebMap | Millbrook -->
   <div class="p-row" style="grid-template-columns: 505fr 772fr;">
-    <div class="card card-single" onclick="openModal('pfas')">
+    <div class="card" onclick="openModal('pfas')">
       <img src="images_2/WebMap.png" alt="PFAS Web Map">
       <div class="card-overlay">
         <div class="card-section-tag">Research</div>
@@ -745,7 +444,7 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-    <div class="card card-single" onclick="openModal('millbrook')">
+    <div class="card" onclick="openModal('millbrook')">
       <img src="images_2/Millbrook_Combined.png" alt="Millbrook">
       <div class="card-overlay">
         <div class="card-section-tag">GeoGraphics Lab</div>
@@ -755,9 +454,9 @@
     </div>
   </div>
 
-  <!-- ROW 6: NoRWB (left) | CFB Map (right) -->
+  <!-- ROW 6: NoRWB | CFB Map -->
   <div class="p-row" style="grid-template-columns: 503fr 774fr;">
-    <div class="card card-single" onclick="openModal('norwb')">
+    <div class="card" onclick="openModal('norwb')">
       <img src="images_2/NoRWB.png" alt="NoRWB">
       <div class="card-overlay">
         <div class="card-section-tag">Personal</div>
@@ -765,7 +464,7 @@
         <div class="card-cta">click to explore</div>
       </div>
     </div>
-    <div class="card card-single" onclick="openModal('cfb')">
+    <div class="card" onclick="openModal('cfb')">
       <img src="images_2/CFB_map.png" alt="CFB Map">
       <div class="card-overlay">
         <div class="card-section-tag">Personal</div>
@@ -775,9 +474,9 @@
     </div>
   </div>
 
-  <!-- ROW 7: Tigers Graphic - half width, left aligned -->
+  <!-- ROW 7: Tigers Graphic half width left -->
   <div class="p-row" style="grid-template-columns: 1fr 1fr;">
-    <div class="card card-single" onclick="openModal('tigers')">
+    <div class="card" onclick="openModal('tigers')">
       <img src="images_2/Tigers_graphic.png" alt="Tigers Graphic">
       <div class="card-overlay">
         <div class="card-section-tag">Personal</div>
@@ -795,7 +494,6 @@
   <span>Cooper Price — Cartography Portfolio &nbsp;·&nbsp; Penn State University</span>
 </footer>
 
-<!-- MODAL -->
 <div class="modal-bg" id="modalBg" onclick="closeIfBg(event)">
   <button class="modal-close" onclick="closeModal()">Close ✕</button>
   <div class="modal">
@@ -810,7 +508,7 @@ const data = {
     section: 'Classwork',
     title: 'Yellowstone Wildfire Risk — LEGO Style',
     images: ['images_2/lego_wildfire_map.png'],
-    desc: 'Created for a final project in a cartography class, this map uses LANDFIRE data to produce a wildfire risk raster for the Yellowstone region. The visual style applies a LEGO brick aesthetic, blending serious spatial analysis with a playful, tactile presentation.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
     link: null
   },
@@ -818,7 +516,7 @@ const data = {
     section: 'Classwork',
     title: 'Michigan Internet Access',
     images: ['images_2/Michigan_bivaret.png', 'images_2/Michigan_choropleth.png'],
-    desc: 'These maps were created for a class project using Census ACS data to examine internet access across Michigan, with a focus on percent change over time. The paired format allows direct comparison across different temporal snapshots.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['ArcGIS', 'Adobe Illustrator'],
     link: null
   },
@@ -826,15 +524,15 @@ const data = {
     section: 'Research',
     title: 'PFAS & Roadside Springs Research',
     images: ['images_2/PFAS_bivaret_map.png', 'images_2/WebMap.png'],
-    desc: 'Through research with Penn State Extension, this project examines water quality in roadside springs and its relationship to surrounding land use — visualized through a bivariate map. Research has been presented at the Penn State Water Conference, PIERS Conference, Penn State Undergraduate Research Exhibit, and UCOWR Conference. Findings were also published in an interactive web map through Penn State Extension.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['ArcGIS', 'ArcGIS Online', 'Arcade', 'Python', 'Adobe Illustrator'],
-    link: { url: 'https://extension.psu.edu/roadside-springs-map', label: 'View Interactive Web Map →' }
+    link: { url: 'https://extension.psu.edu/roadside-springs-map', label: 'View Interactive Web Map' }
   },
   bsa: {
     section: 'GeoGraphics Lab',
     title: 'BSA — 7 Mountains Scout Camp',
     images: ['images_2/BSAMap1.png', 'images_2/BSAMap2.png', 'images_2/BSAMap3.png'],
-    desc: 'Maps created for a local scout camp whose existing materials were outdated ahead of their season-opening events. Working through the GeoGraphics Lab, three versions were produced: high color without elevation, high color with elevation, and low color with elevation — giving the camp flexibility for different print and display contexts.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['QGIS', 'ArcGIS', 'Eduard', 'Adobe Illustrator', 'Adobe Photoshop'],
     link: null
   },
@@ -842,7 +540,7 @@ const data = {
     section: 'GeoGraphics Lab',
     title: 'Millbrook Marsh LEGO Maps',
     images: ['images_2/Millbrook_Combined.png'],
-    desc: 'Designed for the Millbrook Marsh Visitor Center as a spatial installation for their new building. The LEGO brick aesthetic was chosen to engage a younger audience, making the geographic space approachable and interactive.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
     link: null
   },
@@ -850,7 +548,7 @@ const data = {
     section: 'Personal Projects',
     title: 'Black Bear Hunting Map',
     images: ['images_2/Black_bear_map.png'],
-    desc: 'A passion project built to gain experience with Blender as a cartographic tool. Using a QGIS-to-Blender workflow with the GIS plugin, elevation data was extruded into a 3D surface, giving the distribution data physical dimension and depth.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['QGIS', 'Blender'],
     link: null
   },
@@ -858,7 +556,7 @@ const data = {
     section: 'NACIS',
     title: 'NACIS Map Quilt — Louisville',
     images: ['images_2/Map_Quilt_Scrabble.png', 'images_2/FullMapQuilt.jpg'],
-    desc: 'Created as part of the NACIS conference map quilt tradition, where the host city is divided into a grid and each tile is designed independently. All tiles are displayed together at the conference. This tile covers a section of Louisville and uses a Scrabble-board style to label the city's neighborhoods.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['QGIS', 'Adobe Illustrator'],
     link: null
   },
@@ -866,7 +564,7 @@ const data = {
     section: 'NACIS',
     title: 'Isle Royale National Park',
     images: ['images_2/IsleRoyale.png'],
-    desc: 'Started as a Christmas gift for a brother who works as a park ranger on Isle Royale, the timeline of this project aligned with the NACIS student map competition — so it was submitted to both. The 3D terrain was rendered in Blender and composited with additional cartographic elements in Illustrator.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['QGIS', 'Blender', 'Adobe Illustrator', 'Adobe Photoshop'],
     link: null
   },
@@ -874,7 +572,7 @@ const data = {
     section: 'CaGIS',
     title: 'NYC Scrabble Map — CaGIS Competition',
     images: ['images_2/NYC_scrabble.png'],
-    desc: 'Submitted to the Cartography and Geographic Information Society (CaGIS) student map competition. Building on the Louisville Scrabble tile made for NACIS, this map expands the concept to a section of New York City — labeling neighborhoods and streets through the lens of a Scrabble board.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: ['QGIS', 'Adobe Illustrator'],
     link: null
   },
@@ -882,7 +580,7 @@ const data = {
     section: 'Personal',
     title: 'NoRWB',
     images: ['images_2/NoRWB.png'],
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: [],
     link: null
   },
@@ -890,7 +588,7 @@ const data = {
     section: 'Personal',
     title: 'CFB Map',
     images: ['images_2/CFB_map.png'],
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: [],
     link: null
   },
@@ -898,7 +596,7 @@ const data = {
     section: 'Personal',
     title: 'Tigers Graphic',
     images: ['images_2/Tigers_graphic.png'],
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
     tools: [],
     link: null
   }
@@ -908,17 +606,14 @@ function openModal(key) {
   const d = data[key];
   if (!d) return;
   document.getElementById('modalMedia').innerHTML =
-    d.images.map(src => `<img src="${src}" alt="${d.title}">`).join('');
-  document.getElementById('modalInfo').innerHTML = `
-    <div class="modal-section-tag">${d.section}</div>
-    <h2 class="modal-title">${d.title}</h2>
-    <p class="modal-desc">${d.desc}</p>
-    <div>
-      <div class="modal-tools-label">Tools Used</div>
-      <div class="tools-list">${d.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}</div>
-    </div>
-    ${d.link ? `<a href="${d.link.url}" target="_blank" class="modal-link">${d.link.label}</a>` : ''}
-  `;
+    d.images.map(function(src) { return '<img src="' + src + '" alt="' + d.title + '">'; }).join('');
+  document.getElementById('modalInfo').innerHTML =
+    '<div class="modal-section-tag">' + d.section + '</div>' +
+    '<h2 class="modal-title">' + d.title + '</h2>' +
+    '<p class="modal-desc">' + d.desc + '</p>' +
+    '<div><div class="modal-tools-label">Tools Used</div>' +
+    '<div class="tools-list">' + d.tools.map(function(t){ return '<span class="tool-tag">' + t + '</span>'; }).join('') + '</div></div>' +
+    (d.link ? '<a href="' + d.link.url + '" target="_blank" class="modal-link">' + d.link.label + '</a>' : '');
   document.getElementById('modalBg').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -932,7 +627,7 @@ function closeIfBg(e) {
   if (e.target === document.getElementById('modalBg')) closeModal();
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
