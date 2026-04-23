@@ -54,11 +54,12 @@
     padding-top: 68px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
+    min-height: 52vh;
+    max-height: 60vh;
   }
 
   .hero-text {
-    padding: 72px 52px 60px;
+    padding: 32px 52px 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,15 +68,15 @@
 
   .hero-label { color: var(--accent2); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; font-weight: 400; }
 
-  .hero h1 { font-weight: 300; font-size: clamp(36px, 4vw, 58px); line-height: 1.1; color: var(--text); margin-bottom: 24px; }
+  .hero h1 { font-weight: 300; font-size: clamp(28px, 3vw, 44px); line-height: 1.1; color: var(--text); margin-bottom: 16px; }
   .hero h1 em { font-style: italic; color: var(--accent2); }
 
-  .hero p { color: rgba(239,185,212,0.45); line-height: 1.85; font-size: 14px; font-weight: 300; max-width: 400px; margin-bottom: 36px; }
+  .hero p { color: rgba(239,185,212,0.45); line-height: 1.7; font-size: 13px; font-weight: 300; max-width: 400px; margin-bottom: 20px; }
 
   .hero-meta { font-size: 11px; letter-spacing: 0.12em; color: rgba(162,55,126,0.45); text-transform: uppercase; }
 
-  .hero-logo-panel { display: flex; align-items: center; justify-content: center; padding: 60px; background: rgba(94,22,78,0.05); }
-  .hero-logo-panel img { width: min(60%, 360px); height: auto; opacity: 0.72; filter: drop-shadow(0 0 80px rgba(162,55,126,0.25)); transition: opacity 0.3s; }
+  .hero-logo-panel { display: flex; align-items: center; justify-content: center; padding: 32px; background: rgba(94,22,78,0.05); }
+  .hero-logo-panel img { width: min(45%, 260px); height: auto; opacity: 0.72; filter: drop-shadow(0 0 80px rgba(162,55,126,0.25)); transition: opacity 0.3s; }
   .hero-logo-panel img:hover { opacity: 0.9; }
 
   /* PORTFOLIO GRID */
