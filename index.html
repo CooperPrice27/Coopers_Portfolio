@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Cooper Price — Cartography Portfolio</title>
+<title>Cooper Price ‚Äî Cartography Portfolio</title>
 <style>
   /* Transat typeface */
   @font-face { font-family: 'Transat'; src: url('fonts/transat-light.ttf') format('truetype'); font-weight: 300; font-style: normal; }
@@ -27,7 +27,7 @@
     --muted: #a580b9;
     --accent2: #a580b9;
     --deep: #55519e;
-    --accent-yellow: #f8ed73;  /* 248,237,115 — used sparingly */
+    --accent-yellow: #f8ed73;  /* 248,237,115 ‚Äî used sparingly */
     --bar-gradient: linear-gradient(90deg, #6b62a9, #ba97c6); /* 107,98,169 -> 186,151,198 */
   }
 
@@ -119,33 +119,16 @@
   .about-text { flex: 1 1 520px; }
 
   .selfieDiv {
-    flex: 0 1 320px;
+    flex: 0 1 300px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .headshots {
-    display: flex;
-    gap: 14px;
     justify-content: center;
-    width: 100%;
-  }
-
-  .headshot {
-    width: calc(50% - 7px);
-    max-width: 155px;
-    height: auto;
-    display: block;
-    border: 1px solid var(--border);
-    filter: drop-shadow(0 0 40px rgba(165,128,185,0.25));
   }
 
   .selfie-logo {
-    width: 90px;
+    width: 100%;
+    max-width: 280px;
     height: auto;
-    opacity: 0.75;
+    opacity: 0.85;
     filter: drop-shadow(0 0 60px rgba(165,128,185,0.35));
   }
 
@@ -456,8 +439,7 @@
     .topContainer { padding: 110px 20px 40px; }
     .about-row { gap: 24px; }
     .selfieDiv { order: -1; flex-basis: 100%; }
-    .headshot { max-width: 130px; }
-    .selfie-logo { width: 70px; }
+    .selfie-logo { max-width: 180px; }
     .portfolio-row { flex-direction: column; }
     .modal { width: 98vw; grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
     .modal-media, .modal-info { height: auto; max-height: 44vh; }
@@ -492,13 +474,9 @@
           Hey, I'm Cooper Price, currently a student cartographer in the GeoGraphics Lab at Penn State. Below is my work, from a wide variety of projects.
         </p>
         <p><em>You can check out my portfolio of maps below!</em></p>
-        <p class="about-meta">Penn State University &nbsp;·&nbsp; GeoGraphics Lab</p>
+        <p class="about-meta">Penn State University &nbsp;¬∑&nbsp; GeoGraphics Lab</p>
       </div>
       <div class="selfieDiv">
-        <div class="headshots">
-          <img class="headshot" src="images_2/CooperPriceHeadshot.jpg" alt="Cooper Price">
-          <img class="headshot" src="images_2/Headshot2.PNG" alt="Cooper Price">
-        </div>
         <img class="selfie-logo" src="images_2/Logo_noBackground.png" alt="Cooper Price Logo">
       </div>
     </div>
@@ -540,7 +518,7 @@
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
-                    <p>Yellowstone Wildfire Risk — LEGO</p>
+                    <p>Yellowstone Wildfire Risk ‚Äî LEGO</p>
                   </div>
                   <div class="info-text">
                     ArcGIS, Illustrator, Bricklink Studio
@@ -558,7 +536,7 @@
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
-                    <p>Map Quilt — Louisville</p>
+                    <p>Map Quilt ‚Äî Louisville</p>
                   </div>
                   <div class="info-text">
                     QGIS, Illustrator
@@ -689,7 +667,7 @@
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
-                    <p>BSA — 7 Mountains Scout Camp</p>
+                    <p>BSA ‚Äî 7 Mountains Scout Camp</p>
                   </div>
                   <div class="info-text">
                     QGIS, ArcGIS, Eduard, Illustrator
@@ -725,7 +703,7 @@
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
-                    <p>Michigan Internet Access — Bivariate</p>
+                    <p>Michigan Internet Access ‚Äî Bivariate</p>
                   </div>
                   <div class="info-text">
                     ArcGIS, Illustrator
@@ -802,14 +780,14 @@
   <footer>
     <div class="text-center" role="contentinfo">
       <img src="images_2/Logo_noBackground.png" alt="Logo">
-      <p>Cooper Price — Cartography Portfolio &nbsp;·&nbsp; Penn State University</p>
+      <p>Cooper Price ‚Äî Cartography Portfolio &nbsp;¬∑&nbsp; Penn State University</p>
     </div>
   </footer>
 
 </div>
 
 <div class="modal-bg" id="modalBg" onclick="closeIfBg(event)">
-  <button class="modal-close" onclick="closeModal()">Close ✕</button>
+  <button class="modal-close" onclick="closeModal()">Close ‚úï</button>
   <div class="modal">
     <div class="modal-media" id="modalMedia"></div>
     <div class="modal-info" id="modalInfo"></div>
@@ -828,7 +806,7 @@ const data = {
   },
   yellowstone: {
     section: 'Classwork',
-    title: 'Yellowstone Wildfire Risk — LEGO Style',
+    title: 'Yellowstone Wildfire Risk ‚Äî LEGO Style',
     images: ['images_2/lego_wildfire_map.png'],
     desc: 'This map was created for a final project in a cartography class, using LANDFIRE data to create a wildfire risk raster and then applying a LEGO style.',
     tools: ['ArcGIS', 'Adobe Illustrator', 'Bricklink Studio'],
@@ -852,7 +830,7 @@ const data = {
   },
   bsa: {
     section: 'GeoGraphics Lab',
-    title: 'BSA — 7 Mountains Scout Camp',
+    title: 'BSA ‚Äî 7 Mountains Scout Camp',
     images: ['images_2/BSAMap1.png', 'images_2/BSAMap2.png', 'images_2/BSAMap3.png'],
     desc: 'These maps were created for a local scout camp. They had some old, outdated maps that needed to be updated before their first events of the year, so they worked with the lab to get their maps redesigned. Three versions were completed: high color without elevation, high color with elevation, and low color with elevation.',
     tools: ['QGIS', 'ArcGIS', 'Eduard', 'Adobe Illustrator', 'Adobe Photoshop'],
@@ -876,9 +854,9 @@ const data = {
   },
   quilt: {
     section: 'NACIS',
-    title: 'NACIS Map Quilt — Louisville',
+    title: 'NACIS Map Quilt ‚Äî Louisville',
     images: ['images_2/Map_Quilt_Scrabble.png', 'images_2/FullMapQuilt.jpg'],
-    desc: 'This map was created as part of the map quilt for the NACIS Conference. As part of the conference, they break up the hosting city into a grid and give free range of design for each map tile — at the conference all of the tiles are displayed together. My map tile took on a scrabble style with the neighborhoods of Louisville labeled.',
+    desc: 'This map was created as part of the map quilt for the NACIS Conference. As part of the conference, they break up the hosting city into a grid and give free range of design for each map tile ‚Äî at the conference all of the tiles are displayed together. My map tile took on a scrabble style with the neighborhoods of Louisville labeled.',
     tools: ['QGIS', 'Adobe Illustrator'],
     link: null
   },
@@ -892,7 +870,7 @@ const data = {
   },
   cagis: {
     section: 'CaGIS',
-    title: 'NYC Scrabble Map — CaGIS Competition',
+    title: 'NYC Scrabble Map ‚Äî CaGIS Competition',
     images: ['images_2/NYC_scrabble.png'],
     desc: 'This map was submitted to the Cartography and Geographic Information Society (CaGIS) student map competition. Building off of the work done for the NACIS map quilt, the goal was to scrabble-ify part of New York City.',
     tools: ['QGIS', 'Adobe Illustrator'],
