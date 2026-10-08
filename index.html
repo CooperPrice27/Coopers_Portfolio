@@ -217,6 +217,7 @@
   .thumbnail img {
     width: 100%;
     height: auto;
+    aspect-ratio: auto 4 / 3; /* placeholder size until each image loads, so lazy-loading works */
     display: block;
     transition: transform 0.4s ease;
   }
@@ -496,7 +497,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('walker')">
             <div class="thumbnail">
-              <img src="images_2/InHallway.jpg" alt="Walker Building Floor Maps">
+              <img src="images_2/thumbnail/InHallway.jpg" alt="Walker Building Floor Maps">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -514,7 +515,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('yellowstone')">
             <div class="thumbnail">
-              <img src="images_2/lego_wildfire_map.png" alt="LEGO Wildfire Map">
+              <img src="images_2/thumbnail/lego_wildfire_map.png" alt="LEGO Wildfire Map" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -532,7 +533,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('quilt')">
             <div class="thumbnail">
-              <img src="images_2/Map_Quilt_Scrabble.png" alt="Map Quilt Scrabble">
+              <img src="images_2/thumbnail/Map_Quilt_Scrabble.png" alt="Map Quilt Scrabble" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -550,7 +551,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('cagis')">
             <div class="thumbnail">
-              <img src="images_2/NYC_scrabble.png" alt="NYC Scrabble">
+              <img src="images_2/thumbnail/NYC_scrabble.png" alt="NYC Scrabble" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -568,7 +569,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('pfas')">
             <div class="thumbnail">
-              <img src="images_2/WebMap.png" alt="PFAS Web Map">
+              <img src="images_2/thumbnail/WebMap.png" alt="PFAS Web Map" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -586,7 +587,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('norwb')">
             <div class="thumbnail">
-              <img src="images_2/NoRWB_Labels_added.png" alt="NoRWB">
+              <img src="images_2/thumbnail/NoRWB_Labels_added.png" alt="NoRWB" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -604,7 +605,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('tigers')">
             <div class="thumbnail">
-              <img src="images_2/Tigers_graphic.png" alt="Tigers Graphic">
+              <img src="images_2/thumbnail/Tigers_graphic.png" alt="Tigers Graphic" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -622,7 +623,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('jodi')">
             <div class="thumbnail">
-              <img src="images_2/Jodi_Map.png" alt="US Capitals Scout Map">
+              <img src="images_2/thumbnail/Jodi_Map.png" alt="US Capitals Scout Map" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -645,7 +646,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('isleroyale')">
             <div class="thumbnail">
-              <img src="images_2/IsleRoyale.png" alt="Isle Royale">
+              <img src="images_2/thumbnail/IsleRoyale.png" alt="Isle Royale">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -663,7 +664,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('bsa')">
             <div class="thumbnail">
-              <img src="images_2/BSAMap1.png" alt="BSA Map">
+              <img src="images_2/thumbnail/BSAMap1.png" alt="BSA Map" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -681,7 +682,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('michigan')">
             <div class="thumbnail">
-              <img src="images_2/Michigan_choropleth.png" alt="Michigan Choropleth">
+              <img src="images_2/thumbnail/Michigan_choropleth.png" alt="Michigan Choropleth" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -699,7 +700,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('michigan')">
             <div class="thumbnail">
-              <img src="images_2/Michigan_bivaret.png" alt="Michigan Bivariate">
+              <img src="images_2/thumbnail/Michigan_bivaret.png" alt="Michigan Bivariate" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -717,7 +718,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('bear')">
             <div class="thumbnail">
-              <img src="images_2/Black_bear_map.png" alt="Black Bear">
+              <img src="images_2/thumbnail/Black_bear_map.png" alt="Black Bear" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -735,7 +736,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('millbrook')">
             <div class="thumbnail">
-              <img src="images_2/Millbrook_Combined.png" alt="Millbrook">
+              <img src="images_2/thumbnail/Millbrook_Combined.png" alt="Millbrook" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
@@ -753,7 +754,7 @@
         <div class="item">
           <a class="cover-hover" onclick="openModal('cfb')">
             <div class="thumbnail">
-              <img src="images_2/CFB_map.png" alt="CFB Map">
+              <img src="images_2/thumbnail/CFB_map.png" alt="CFB Map" loading="lazy" decoding="async">
               <div class="cover">
                 <div class="cover-container">
                   <div class="cover-text">
