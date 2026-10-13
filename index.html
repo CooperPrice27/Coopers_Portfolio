@@ -261,6 +261,36 @@
     letter-spacing: 0.04em;
   }
 
+  /* ============ ABOUT ME ============ */
+  .aboutContainer {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 130px 24px 0;
+  }
+
+  .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 32px;
+  }
+
+  .about-photos img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .about-body p {
+    color: rgba(227,152,194,0.7);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    max-width: 760px;
+  }
+
   /* ============ MODAL (project details) ============ */
   .modal-bg {
     position: fixed;
@@ -442,6 +472,8 @@
     .selfieDiv { order: -1; flex-basis: 100%; }
     .selfie-logo { max-width: 180px; }
     .portfolio-row { flex-direction: column; }
+    .aboutContainer { padding: 110px 20px 0; }
+    .about-photos { grid-template-columns: 1fr; }
     .modal { width: 98vw; grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
     .modal-media, .modal-info { height: auto; max-height: 44vh; }
     .modal-info { border-left: none; border-top: 1px solid var(--border); padding: 24px 20px; }
@@ -457,6 +489,7 @@
     <nav>
       <div class="navbar-nav">
         <a class="nav-link active" href="#intro">Portfolio</a>
+        <a class="nav-link" href="#about">About me</a>
       </div>
       <div class="brand">
         <img src="images_2/Logo_noBackground.png" alt="Logo">
@@ -464,6 +497,8 @@
       </div>
     </nav>
   </header>
+
+  <div id="viewPortfolio">
 
   <!--About-->
   <div class="topContainer">
@@ -773,6 +808,24 @@
 
     </div>
 
+  </div><!-- /viewPortfolio -->
+
+  <!--About Me view-->
+  <div id="viewAbout" hidden>
+    <div class="aboutContainer">
+      <h1 class="portfolioHeader">About Me</h1>
+      <div class="portfolioBar"></div>
+
+      <div class="about-photos">
+        <img src="images_2/Presentation_Photo.jpg" alt="Cooper Price — presentation photo" loading="lazy" decoding="async">
+        <img src="images_2/Headshot_2.jpg" alt="Cooper Price — headshot" loading="lazy" decoding="async">
+      </div>
+
+      <div class="about-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
   </div>
 
   <div class="filler"></div>
@@ -939,6 +992,18 @@ function closeModal() {
 function closeIfBg(e) {
   if (e.target === document.getElementById('modalBg')) closeModal();
 }
+
+function showView() {
+  var about = location.hash === '#about';
+  document.getElementById('viewPortfolio').hidden = about;
+  document.getElementById('viewAbout').hidden = !about;
+  document.querySelectorAll('.nav-link').forEach(function(a) {
+    a.classList.toggle('active', (a.getAttribute('href') === '#about') === about);
+  });
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', showView);
+showView();
 
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 </script>
