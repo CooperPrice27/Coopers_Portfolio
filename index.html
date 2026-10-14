@@ -466,6 +466,8 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 768px) {
     header nav { padding: 12px 20px; }
+    .navbar-nav { gap: 16px; }
+    .nav-link { font-size: 14px; }
     .brand h5 { font-size: 15px; }
     .topContainer { padding: 110px 20px 40px; }
     .about-row { gap: 24px; }
@@ -490,6 +492,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" href="#intro">Portfolio</a>
         <a class="nav-link" href="#about">About me</a>
+        <a class="nav-link" href="CooperPrice_Resume_2026.pdf" target="_blank" rel="noopener">Resume</a>
       </div>
       <div class="brand">
         <img src="images_2/Logo_noBackground.png" alt="Logo">
@@ -999,7 +1002,7 @@ function showView() {
   var about = location.hash === '#about';
   document.getElementById('viewPortfolio').hidden = about;
   document.getElementById('viewAbout').hidden = !about;
-  document.querySelectorAll('.nav-link').forEach(function(a) {
+  document.querySelectorAll('.nav-link[href^="#"]').forEach(function(a) {
     a.classList.toggle('active', (a.getAttribute('href') === '#about') === about);
   });
   window.scrollTo(0, 0);
